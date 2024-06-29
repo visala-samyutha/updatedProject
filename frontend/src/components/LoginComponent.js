@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useAuth } from "./AuthProvider";
+import { useAuth } from "../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const LoginComponent = () => {

@@ -50,7 +50,7 @@
 
 //  export default HeaderComponent;
 import { Link } from 'react-router-dom';
-import { useAuth } from "./AuthProvider";
+import { useAuth } from "../Provider/AuthProvider";
 
 function HeaderComponent() {
     const  {logOut}  = useAuth();

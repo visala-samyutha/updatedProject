@@ -1,4 +1,4 @@
-import { useAuth } from './AuthProvider'; // Ensure the path is correct
+import { useAuth } from '../Provider/AuthProvider'; // Ensure the path is correct
 import { Navigate, Outlet } from 'react-router-dom';
 import Popup from 'react-popup';
 const UserPrivateRoute = () => {

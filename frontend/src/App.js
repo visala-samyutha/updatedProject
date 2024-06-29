@@ -4,7 +4,7 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 // import PaswordComponent from './components/PasswordComponent';
 import HeaderComponent from './components/HeaderComponent';
 // import PrivComponent from './components/PrivComponent';
-// import FooterComponent from './components/FooterComponent'
+import FooterComponent from './components/FooterComponent'
 import ProductComponent from './components/ProductComponent';
 import SignUpComponent from './components/SignupComponent';
 import HomeComponent from './components/HomeComponent';
@@ -12,15 +12,15 @@ import MainComponent from './components/MainComponent';
 import CartComponent from './components/CartComponent';
 import OrderComponent from './components/OrderComponent';
 import HomeOrderComponent from './components/HomeOrderComponent'
-import AuthProvider from './components/AuthProvider';
+import AuthProvider from './Provider/AuthProvider';
 // import { HomeOrderProvider } from './components/HomeOrderProvider';
 import CartOrderComponent from './components/CartOrderComponent';
 import PaswordComponent from './components/PasswordComponent';
 import PrivComponent from './components/PrivComponent';
-import AdminPrivateRoute from './components/AdminPrivateRoute'
+import AdminPrivateRoute from './Routes/AdminPrivateRoute'
 import ProductDetail from './components/ProductDetail';
 import HomeProductDetail from './components/HomeProductDetail';
-import UserPrivateRoute from './components/UserPrivateRoute';
+import UserPrivateRoute from './Routes/UserPrivateRoute';
 function App() {
   return(
  <BrowserRouter>
@@ -46,7 +46,7 @@ function App() {
  <Route path="/homeorder" exact element={<HomeOrderComponent/>}></Route>
  <Route path="/cartorder" exact element={<CartOrderComponent/>}></Route>
   </Routes>
- {/* <FooterComponent/> */}
+ <FooterComponent/>
  </AuthProvider>
  </BrowserRouter>
     

@@ -1,7 +1,7 @@
 // HomeOrderComponent.js
 import React, { useContext,useState,useEffect } from 'react';
 import axios from 'axios';
-import {useAuth} from './AuthProvider';
+import {useAuth} from '../Provider/AuthProvider';
 import { Container, Row, Col, Card, CardHeader, CardBody, CardFooter } from 'react-bootstrap';
 
 

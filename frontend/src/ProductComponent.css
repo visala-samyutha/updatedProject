@@ -78,3 +78,19 @@ header, .search-bar {
 .text-center {
     text-align: center;
 }
+.filter-section {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+
+.filter-dropdown .dropdown-menu {
+    width: 200px;
+    padding: 10px;
+}
+
+.filter-dropdown:hover .dropdown-menu {
+    display: block;
+}

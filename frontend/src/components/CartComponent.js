@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Button, Card, Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from './AuthProvider';
+import { useAuth } from '../Provider/AuthProvider';
 import '../ProductComponent.css'; 
 
 function CartComponent() {

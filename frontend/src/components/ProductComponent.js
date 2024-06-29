@@ -8,7 +8,6 @@ import '../ProductComponent.css'; // Import the custom CSS file
 const ProductComponent = () => {
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
-    const [filteredProducts, setFilteredProducts] = useState([]);
     const [formData, setFormData] = useState({
         imageUrl: "",
         productName: "",
@@ -18,8 +17,6 @@ const ProductComponent = () => {
         description: "",
         quantity: ""
     });
-    const [colorFilter, setColorFilter] = useState('');
-    const [typeFilter, setTypeFilter] = useState('');
     const [show, setShow] = useState(false);
     const [editProduct, setEditProduct] = useState(null);
 
@@ -28,27 +25,12 @@ const ProductComponent = () => {
             try {
                 const response = await axios.get('http://localhost:3002/admin/');
                 setProducts(response.data);
-                setFilteredProducts(response.data);
             } catch (err) {
                 console.log(err);
             }
         };
         fetchProducts();
     }, []);
-
-    useEffect(() => {
-        let filtered = products;
-
-        if (colorFilter) {
-            filtered = filtered.filter(product => product.color === colorFilter);
-        }
-
-        if (typeFilter) {
-            filtered = filtered.filter(product => product.type === typeFilter);
-        }
-
-        setFilteredProducts(filtered);
-    }, [colorFilter, typeFilter, products]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -67,7 +49,6 @@ const ProductComponent = () => {
                     product._id === response.data._id ? response.data : product
                 );
                 setProducts(updatedProducts);
-                setFilteredProducts(updatedProducts);
             } catch (error) {
                 console.error("Error:", error);
             }
@@ -75,7 +56,6 @@ const ProductComponent = () => {
             try {
                 const response = await axios.post('http://localhost:3002/admin/addProduct', formData);
                 setProducts([...products, response.data]);
-                setFilteredProducts([...products, response.data]);
             } catch (error) {
                 console.error("Error:", error);
             }
@@ -116,7 +96,6 @@ const ProductComponent = () => {
             await axios.delete(`http://localhost:3002/admin/delete/${id}`);
             const updatedProducts = products.filter((product) => product._id !== id);
             setProducts(updatedProducts);
-            setFilteredProducts(updatedProducts);
         } catch (error) {
             console.error("Error:", error);
         }
@@ -142,27 +121,9 @@ const ProductComponent = () => {
                 }}>Add Product</Button>
             </div>
 
-             {/* <h2 className="mt-5 text-center">Filter Products</h2>
-            <div className="d-flex justify-content-center mb-4">
-                <Form.Control as="select" value={colorFilter} onChange={(e) => setColorFilter(e.target.value)} className="mr-2">
-                    <option value="">All Colors</option>
-                    <option value="red">Red</option>
-                    <option value="blue">Blue</option>
-                    <option value="green">Green</option>
-                     Add more colors as needed 
-                </Form.Control>
-                <Form.Control as="select" value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
-                    <option value="">All Types</option>
-                    <option value="dress">Dress</option>
-                    <option value="shirt">Shirt</option>
-                    <option value="saree">Saree</option> */}
-                    {/* Add more types as needed */}
-                {/* </Form.Control>
-            </div> */}
-
             <h2 className="mt-5 text-center">Product List</h2>
             <Row>
-                {filteredProducts.map((product) => (
+                {products.map((product) => (
                     <Col md={4} key={product._id} className="mb-4">
                         <Card className="product-card">
                             <Card.Img variant="top" src={product.imageUrl} />
@@ -224,7 +185,5 @@ const ProductComponent = () => {
         </>
     );
 };
-
-
 
 export default ProductComponent;

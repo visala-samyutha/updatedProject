@@ -61,7 +61,7 @@ async function checkUser(req, res) {
             return res.status(200).json({ message: "Invalid email or password" });
         }
 
-        const token = jwt.sign({ userId: user._id }, process.env.TOKEN_KEY, {
+        const token = jwt.sign({ userId: user._id }, process.env.TOKEN_KEY, { expiresIn:'24h'
         });
 
         res.status(200).json({ token: token, login: true, role: user.role, message: "User logged in successfully",id:user._id });
