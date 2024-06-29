@@ -1,0 +1,80 @@
+body {
+    background-color: #f2f2f2; /* Light grey background for the entire page */
+}
+header, .search-bar {
+    background-color: inherit; /* Ensure the header and search bar use the inherited background color */
+}
+.product-card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    background-color: #fffaf0; /* Pastel yellow background */
+    border: 1px solid #e3e3e3; /* Light grey border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.product-card img {
+    height: 200px;
+    width: 100%;
+    object-fit: contain; /* Ensure the full image is visible */
+    padding: 10px; /* Add padding for better visibility */
+}
+
+.product-card .card-body {
+    text-align: center;
+    background-color: #f5d5f5; /* Pastel green background for the card body */
+}
+
+.product-card .btn-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.product-card .btn-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.product-card .btn-secondary {
+    background-color: #f8d7da; /* Pastel red background for edit button */
+    border-color: #f8d7da;
+    color: #721c24;
+}
+
+.product-card .btn-secondary:hover {
+    background-color: #f5c6cb;
+    border-color: #f5c6cb;
+}
+
+.product-card .btn-danger {
+    background-color: #fff3cd; /* Pastel yellow background for delete button */
+    border-color: #fff3cd;
+    color: #856404;
+}
+
+.product-card .btn-danger:hover {
+    background-color: #ffeeba;
+    border-color: #ffeeba;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* background-color: #f0eaf1; Light blue background for the container */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.text-center {
+    text-align: center;
+}
