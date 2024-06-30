@@ -64,11 +64,43 @@ async function checkUser(req, res) {
         const token = jwt.sign({ userId: user._id }, process.env.TOKEN_KEY, { expiresIn:'24h'
         });
 
-        res.status(200).json({ token: token, login: true, role: user.role, message: "User logged in successfully",id:user._id });
+        res.status(200).json({ token: token, login: true, role: user.role, message: "User logged in successfully", id: user._id });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal server error" });
     }
 }
 
-module.exports = { saveUser, checkUser };
+// User password update handler
+async function updatePassword(req, res) {
+    try {
+        const { userId, currentPassword, newPassword } = req.body;
+        const user = await signModel.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        const passwordMatch = await bcrypt.compare(currentPassword, user.password);
+
+        if (!passwordMatch) {
+            return res.status(400).json({ message: "Current password is incorrect" });
+        }
+
+        // Hash new password
+        const salt = await bcrypt.genSalt(10);
+        const hashedNewPassword = await bcrypt.hash(newPassword, salt);
+
+        // Update password in the database
+        user.password = hashedNewPassword;
+        await user.save();
+
+        res.status(200).json({ message: "Password updated successfully" });
+    } catch (error) {
+        console.error('Error in updatePassword:', error.message);
+        res.status(500).json({ message: "Internal server error", error: error.message });
+    }
+}
+
+
+module.exports = { saveUser, checkUser, updatePassword };

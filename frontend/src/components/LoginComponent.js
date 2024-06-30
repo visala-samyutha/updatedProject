@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useAuth } from "./AuthProvider";
+import { useAuth } from "../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import { FloatingLabel } from "react-bootstrap";
+
 const LoginComponent = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -30,15 +30,16 @@ const LoginComponent = () => {
                 <div className="col-md-6">
                     <div className="card mt-5">
                         <div className="card-body">
-                            <h1 className="text-center mb-4 ">Login</h1>
+                            <h1 className="text-center mb-4">Login</h1>
                             <form onSubmit={(e)=>handleSubmit(e)}>
-                            <FloatingLabel label="Email :" className="mb-3">
-                                    <input type="email" id="uname" className="form-control" placeholder="Enter your email"  required onChange={(e) => setEmail(e.target.value)} />
-                                    </FloatingLabel>
-                                <FloatingLabel label="Password :" className="mb-3">
-                                   
+                                <div className="mb-3">
+                                    <label htmlFor="uname" className="form-label">Email:</label>
+                                    <input type="email" id="uname" className="form-control" placeholder="Enter your email" autoFocus required onChange={(e) => setEmail(e.target.value)} />
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="pass" className="form-label">Password:</label>
                                     <input type="password" id="pass" className="form-control" placeholder="Enter your password" required onChange={(e) => setPassword(e.target.value)} />
-                                </FloatingLabel>
+                                </div>
                                 <div className="mb-3 form-check">
                                     <input type="checkbox" className="form-check-input" id="agreeCheckbox" checked={agreeTerms} onChange={(e) => setAgreeTerms(e.target.checked)} />
                                     <label className="form-check-label" htmlFor="agreeCheckbox">
@@ -46,12 +47,10 @@ const LoginComponent = () => {
                                     </label>
                                 </div>
                                 <div className="d-grid">
-                                    <button type="submit" className="btn btn-color ">Login</button>
+                                    <button type="submit" className="btn btn-dark btn-lg">Login</button>
                                 </div>
                             </form>
-                            <div className="text-center mt-3">
-                                <Link to="/pass">Forgot Password?</Link>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
