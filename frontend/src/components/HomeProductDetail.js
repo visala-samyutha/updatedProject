@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Card, Container, Row, Col,Button } from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
-import {useAuth} from './AuthProvider';
+import {useAuth} from '../Provider/AuthProvider';
 import '../HomeProductDetails.css'
 const HomeProductDetail = () => {
   const { id } = useParams();
