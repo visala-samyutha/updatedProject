@@ -3,9 +3,8 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Card, Container, Row, Col,Button } from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
-import {useAuth} from '../Provider/AuthProvider';
-
-
+import {useAuth} from './AuthProvider';
+import '../HomeProductDetails.css'
 const HomeProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -51,30 +50,37 @@ const handlePlaceOrder = async (pid) => {
 };
 
   return (
-    <Container className="product-detail-container mt-5">
-      <Row>
-        <Col md={6}>
-          <Card>
-            <Card.Img variant="top" src={product.imageUrl} />
-          </Card>
-        </Col>
-        <Col md={6}>
-          <Card>
-            <Card.Body>
-              <Card.Title>{product.productName}</Card.Title>
-              <Card.Text><strong>Price:</strong> ${product.price}</Card.Text>
-              <Card.Text><strong>Color:</strong> {product.color}</Card.Text>
-              <Card.Text><strong>Type:</strong> {product.type}</Card.Text>
-              <Card.Text><strong>Description:</strong> {product.description}</Card.Text>
-              
-              <Button variant="primary"  onClick={() => handleAddToCart(product._id)}>Add to cart</Button>
-              <Button variant="primary" onClick={() => handlePlaceOrder(product._id)}>Place order</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
-  );
-};
+  <Container className="product-detail-container mt-5">
+    <Row>
+      <Col md={6}>
+        <Card className="product-image-card">
+          <Card.Img variant="top" src={product.imageUrl} className="product-image" />
+        </Card>
+      </Col>
+      <Col md={6}>
+        <Card className="product-info-card">
+          <Card.Body>
+            <center><h1><Card.Title  className="product-title">{product.productName}</Card.Title></h1></center>
+            <Card.Text className="product-price"><strong>Price:</strong> ${product.price}</Card.Text>
+            <Card.Text className="product-color"><strong>Color:</strong> {product.color}</Card.Text>
+            <Card.Text className="product-type"><strong>Type:</strong> {product.type}</Card.Text>
+            <Card.Text className="product-description"><strong>Description:</strong> {product.description}</Card.Text>
+            
+            <div className="button-group">
+              <Button variant="none" className="add-to-cart-button button btn1" onClick={() => handleAddToCart(product._id)}>
+                Add to cart
+              </Button>
+              <Button variant="none" className="place-order-button button btn1" onClick={() => handlePlaceOrder(product._id)}>
+                Place order
+              </Button>
+            </div>
+          </Card.Body>
+        </Card>
+      </Col>
+    </Row>
+  </Container>
+)
+}
+
 
 export default HomeProductDetail;

@@ -1,0 +1,15 @@
+.header {
+    margin-bottom: 0;
+  }
+  
+  .header .container {
+    padding: 0;
+  }
+  
+  .header .nav {
+    margin-bottom: 0;
+  }
+  
+  .header .btn {
+    margin-right: 10px;
+  }
