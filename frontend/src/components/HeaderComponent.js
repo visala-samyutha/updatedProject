@@ -50,7 +50,7 @@
 
 //  export default HeaderComponent;
 import { Link } from 'react-router-dom';
-import { useAuth } from "./AuthProvider";
+import { useAuth } from "../Provider/AuthProvider";
 import '../style.css'
 import '../HeaderComponent.css'
 function HeaderComponent() {
