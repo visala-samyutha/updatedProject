@@ -4,6 +4,7 @@ import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import '../cartComponent.css'; 
 import '../style.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function CartComponent() {
   const navigate = useNavigate();
@@ -102,11 +103,11 @@ function CartComponent() {
                     <Card.Text>Price: ${cart.price}</Card.Text>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
                       <Button variant='light' onClick={() => handleDecrement(cart.productId)} style={{ border: 'none', background: 'none', cursor: 'pointer' }}>
-                        <i className="bi bi-dash-circle"></i>
+                        <i className="fas fa-minus-circle"></i>
                       </Button>
                       <span style={{ margin: '0 10px', fontSize: '1rem', fontWeight: 'bold' }}>{cart.quantity}</span>
                       <Button variant='light' onClick={() => handleIncrement(cart.productId)} style={{ border: 'none', background: 'none', cursor: 'pointer' }}>
-                        <i className="bi bi-plus-circle"></i>
+                        <i className="fas fa-plus-circle"></i>
                       </Button>
                     </div>
                     <Button variant='danger' onClick={() => handleDeleteItem(cart.productId)}>Delete</Button>

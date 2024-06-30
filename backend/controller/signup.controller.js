@@ -78,13 +78,13 @@ async function updatePassword(req, res) {
         const user = await signModel.findById(userId);
 
         if (!user) {
-            return res.status(404).json({ message: "User not found" });
+            return res.json({ message: "User not found" });
         }
 
         const passwordMatch = await bcrypt.compare(currentPassword, user.password);
 
         if (!passwordMatch) {
-            return res.status(400).json({ message: "Current password is incorrect" });
+            return res.json({ message: "Current password is incorrect" });
         }
 
         // Hash new password

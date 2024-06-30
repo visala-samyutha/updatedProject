@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Card, Container, Row, Col, Button } from 'react-bootstrap';
+import '../HomeProductDetails.css'
 
 const ProductDetail = () => {
   const { id } = useParams();

@@ -81,6 +81,13 @@ async function directOrder(req, res) {
         if (!product) {
             return res.status(404).json({ message: "Product not found" });
         }
+        console.log(product.quantity)
+        if(product.quantity===0) 
+            return res.status(200).json({message:"Out of stock"});
+        else{
+            product.quantity=product.quantity-1;
+            await product.save();
+        }
         const { imageUrl,productName, price } = product;
         orders.items.push({
             imageUrl,

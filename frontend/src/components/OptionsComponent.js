@@ -1,30 +1,37 @@
 import { useNavigate } from 'react-router-dom';
 import {useState} from 'react'
+const uid=localStorage.getItem("userId");
 const OptionsComponent=()=>{
     const navigate=useNavigate()
     const handleCartClick=()=>{
-          navigate('/cart')
+      if(uid==null){
+            alert("you must login");
+            navigate('/login')
+          }
+          else
+              navigate('/cart')
     }
     const handleOrderClick=()=>{
+      if(uid==null){
+            alert("you must login");
+            navigate('/login')
+          }
+          else 
            navigate('/order')
-    }
-    const handleSearch=()=>{
-        
     }
    return(
          <>
-  <div className="px-3 py-2 border-bottom og-color mb-3 ">
- <div className="container d-flex flex-wrap justify-content-between">
+ <div className="container d-flex flex-wrap ">
      
-   <button className='btn-color' onClick={()=>handleCartClick()}>
+   <button className='btn-color' onClick={()=>handleCartClick()} style={{ marginRight: '20px',color:'purple',backgroundColor:'white',border:'white' }}>
    <i className="fa-solid fa-cart-shopping"></i>Cart
      </button>
-     <form className="col-12 col-lg-auto mb-2 mb-lg-0" role="search">
+      {/* <form className="col-12 col-lg-auto mb-2 mb-lg-0" role="search">
          <input type="search" className="form-control" onChange={()=>handleSearch()} placeholder="Search..." aria-label="Search" />
-    </form>
-     <button className='btn-color'onClick={()=>handleOrderClick()}> <i class="bi bi-bag-fill"></i>MY ORDER</button>
+    </form>  */}
+     <button className='btn-color'onClick={()=>handleOrderClick()} style={{ height: '40px' ,color:'purple',backgroundColor:'white',border:'white'}}> <i class="bi bi-bag-fill"></i>My Orders</button>
  </div>
- </div> 
+
          </>
    )
 }

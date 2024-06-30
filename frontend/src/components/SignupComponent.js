@@ -50,7 +50,7 @@ const SignUpComponent = () => {
                                 <FloatingLabel label="Password :"className="mb-3">
                                     <input type="password" id="pass" className="form-control" placeholder="Enter your password" required onChange={(e) => setPassword(e.target.value)} />
                                 </FloatingLabel>
-                                    <FloatingLabel label="UserNmae :" className="mb-3">
+                                    <FloatingLabel label="UserName :" className="mb-3">
                                     <input type="text" id="username" className="form-control" placeholder="Enter your username" required onChange={(e) => setUsername(e.target.value)} />
                                     </FloatingLabel>                         
                                     <FloatingLabel label ="Mobile Number :"className="mb-3">
@@ -64,7 +64,7 @@ const SignUpComponent = () => {
                                     </label>
                                 </div>
                                 <div className="d-grid">
-                                    <button type="submit" className="btn btn-color btn-lg">Sign Up</button>
+                                    <button type="submit" className="btn btn-dark btn-lg">Sign Up</button>
                                 </div>
                             </form>
                         </div>

@@ -1,70 +1,73 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { Button, Card, Container, Dropdown, Form, Row, Col } from 'react-bootstrap';
+import { useState, useEffect ,useContext} from 'react';
+import { useNavigate} from 'react-router-dom';
+import { Button, Card, Container,Form,Row,Col,Dropdown } from 'react-bootstrap';
 import { useAuth } from "../Provider/AuthProvider";
 import OptionsComponent from './OptionsComponent';
-import '../ProductComponent.css';
+import '../ProductComponent.css'; 
 
 function HomeComponent() {
-    const navigate = useNavigate();
-    const { setProductId } = useAuth();
-    const [products, setProducts] = useState([]);
-    const [filteredProducts, setFilteredProducts] = useState([]);
-    const [colorFilter, setColorFilter] = useState('');
-    const [priceFilter, setPriceFilter] = useState('');
-    const [typeFilter, setTypeFilter] = useState('');
+  const navigate=useNavigate();
+  const [products, setProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [colorFilter, setColorFilter] = useState('');
+  const [typeFilter, setTypeFilter] = useState('');
+  const [priceFilter, setPriceFilter] = useState('');
 
-    useEffect(() => {
-        fetchProductData();
-    }, []);
 
-    useEffect(() => {
-        let filtered = products;
+  useEffect(() => {
+    fetchProductData();
+  }, []);
+  useEffect(() => {
+    let filtered = products;
 
-        if (colorFilter) {
-            filtered = filtered.filter(product => product.color === colorFilter);
-        }
+    if (colorFilter) {
+        filtered = filtered.filter(product => product.color === colorFilter);
+    }
 
-        if (typeFilter) {
-            filtered = filtered.filter(product => product.type === typeFilter);
-        }
+    if (typeFilter) {
+        filtered = filtered.filter(product => product.type === typeFilter);
+    }
+    if (priceFilter) {
+        const [min, max] = priceFilter.split('-').map(Number);
+        filtered = filtered.filter(product => product.price >= min && product.price <= max);
+    }
 
-        if (priceFilter) {
-            const [min, max] = priceFilter.split('-').map(Number);
-            filtered = filtered.filter(product => product.price >= min && product.price <= max);
-        }
+    
+    
 
-        setFilteredProducts(filtered);
-    }, [colorFilter, typeFilter, priceFilter, products]);
-
-    const fetchProductData = async () => {
-        try {
-            const response = await axios.get("http://localhost:3002/home/");
-            setProducts(response.data);
-            setFilteredProducts(response.data);
-        } catch (err) {
-            console.log(err);
-        }
+    setFilteredProducts(filtered);
+}, [colorFilter, typeFilter, priceFilter, products]);
+  const fetchProductData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3002/home/");
+        setProducts(response.data);
+      } catch (err) {
+        console.log(err);
+      }
     };
-
-    const handleSingleProduct = (id) => {
-        navigate(`/homeproduct/${id}`);
-    };
-
-    return (
-        <>
-            <OptionsComponent />
-            <Container className="my-4">
+    const handleSearch=(e)=>{
+      setSearchQuery(e.target.value);
+  
+    }
+    const fProducts = filteredProducts.filter((product) =>
+        product.productName.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+  const handleSingleProduct = (id) => {
+    navigate(`/homeproduct/${id}`);
+};
+    return(
+       <>
+       <OptionsComponent/>
+       <form className="col-12 col-lg-auto mb-2 mb-lg-0" role="search">
+         <input type="search" className="form-control" value={searchQuery} onChange={handleSearch} placeholder="Search..." aria-label="Search" />
+    </form>
+    <Container className="my-4">
                 <Row>
-                    <Col>
-                        <h1>My Orders</h1>
-                    </Col>
-                    
                     <Col className="text-right">
                         <Dropdown className="filter-dropdown">
-                            <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                            <Dropdown.Toggle style={{color:'purple',backgroundColor:'white',border:'white'}} id="dropdown-basic">
                                 Filters
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
@@ -105,11 +108,8 @@ function HomeComponent() {
                         </Dropdown>
                     </Col>
                 </Row>
-                <div className="text-center mt-3">
-                    <Link to="/pass">Change Password?</Link>
-                </div>
                 <Container style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '20px' }}>
-                    {filteredProducts.map((product) =>
+                    {fProducts.map((product) =>
                         <Card className="product-card" key={product._id} style={{ width: '20rem' }}>
                             <Card.Img variant="top" src={product.imageUrl} style={{ height: '250px', width: '20rem' }} />
                             <Card.Body>
@@ -122,10 +122,8 @@ function HomeComponent() {
                         </Card>
                     )}
                 </Container>
-                
             </Container>
-        </>
-    );
+            </>
+    )
 }
-
-export default HomeComponent;
+export default HomeComponent

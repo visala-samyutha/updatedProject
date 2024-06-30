@@ -62,13 +62,13 @@ function HeaderComponent() {
     return (
         
         <div className="px-3 py-2 bg-color text-dark border-bottom position-sticky  ">
-        <div className="container bg-color">
+        <div className="container bg-color position-sticky">
             <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ">
                 
                 {/* <a href="/" className="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-decoration-none"></a> */}
                 <ul  className="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <li>
-                        <Link to="/product" className="btn btn-color text-dark me-2">Product</Link>
+                        <Link to="/product" className="btn btn-color text-dark me-2">AdminPage</Link>
                     </li>
                     <li>
                         <Link to="/home" className="btn btn-color  text-dark me-2">Home</Link>
@@ -81,6 +81,9 @@ function HeaderComponent() {
                     </li>
                     <li>
                         <Link to="/signup" className="btn btn-color  text-dark me-2">SignUp</Link>
+                    </li>
+                    <li>
+                        <Link to="/pass" className="btn btn-color  text-dark me-2">ChangePassword</Link>
                     </li>
                     
                 </ul>

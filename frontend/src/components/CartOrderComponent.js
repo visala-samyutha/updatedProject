@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Row, Col, Card, CardBody} from 'react-bootstrap';
+import { Container, Row, Col, Card, CardBody,CardHeader} from 'react-bootstrap';
 
 function CartOrderComponent(){
     const [orders, setOrders] = useState([]);
@@ -23,6 +23,9 @@ function CartOrderComponent(){
         };
         return (
             <section className="h-100 gradient-custom">
+                <CardHeader className="px-4 py-5">
+                                    <h5 className="text-muted mb-0">Thanks for your Order,</h5>
+             </CardHeader>
             <Container className="py-5 h-100">
                 <Row className="d-flex justify-content-center align-items-center h-100">
                     <Col lg={10} xl={8}>
