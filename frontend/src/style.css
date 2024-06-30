@@ -5,33 +5,33 @@
     transform: scale(1.07);
   }  
 .bg-color{
-    background-color: #8E24AA;
+    background-color: #BA68C8;
    }
    .og-color{
-    background-color: #BA68C8;
+    background-color: #e4acee;
    }
    li .btn-color{
     border-radius: 20px;
-    background-color: #8E24AA;
+    background-color: #BA68C8;
     cursor: pointer;
    }
    li .btn-color:hover {
     border-radius: 20px;
-    background-color:#BA68C8;
+    background-color:#f5d8fa;
     cursor: pointer;
    }
    .btn-color1{
     border-radius: 20px;
-    background-color: #8E24AA;
+    background-color: #BA68C8;
     cursor: pointer;
    }
    .btn-color1:hover {
     border-radius: 20px;
-    background-color:#BA68C8;
+    background-color:#efd4f4;
     cursor: pointer;
    }
    .btn-color{
-    background-color:#BA68C8;
+    background-color:#94649d;
     border-radius: 10px;
     border: none;
     cursor: pointer;
