@@ -5,29 +5,29 @@
     transform: scale(1.07);
   }  
 .bg-color{
-    background-color: #BA68C8;
+    background-color: #efd7f3;
    }
    .og-color{
     background-color: #e4acee;
    }
    li .btn-color{
     border-radius: 20px;
-    background-color: #BA68C8;
+    background-color: #efd7f3;
     cursor: pointer;
    }
    li .btn-color:hover {
     border-radius: 20px;
-    background-color:#f5d8fa;
+    background-color:#b377be;
     cursor: pointer;
    }
    .btn-color1{
     border-radius: 20px;
-    background-color: #BA68C8;
+    background-color: #efd7f3;
     cursor: pointer;
    }
    .btn-color1:hover {
     border-radius: 20px;
-    background-color:#efd4f4;
+    background-color:#b377be;
     cursor: pointer;
    }
    .btn-color{
@@ -52,7 +52,8 @@
     cursor: pointer;
     margin: 10px;
     transition: 0.8s;
-    position: relative; /* Add this line */
+    position: relative; 
+    /* Add this line */
     overflow: hidden;
     border-radius: 10px;
   }

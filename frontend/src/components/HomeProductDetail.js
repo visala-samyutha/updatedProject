@@ -12,6 +12,7 @@ const HomeProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const uid=localStorage.getItem("userId");
+  const role=localStorage.getItem("role");
   const{setProductId}=useAuth();
   const navigate=useNavigate();
 
@@ -32,6 +33,7 @@ const HomeProductDetail = () => {
   if (!product) return <p>Loading...</p>;
   const handleAddToCart = async (pid) => {
     try {
+  
       if(uid===null){
         alert("you must login");
         navigate('/login')

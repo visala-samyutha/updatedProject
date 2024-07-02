@@ -4,8 +4,10 @@ import { useAuth } from '../Provider/AuthProvider';
 // const uid=localStorage.getItem("userId");
 const OptionsComponent=()=>{
   const {token}=useAuth();
+  const {token}=useAuth();
     const navigate=useNavigate()
     const handleCartClick=()=>{
+      if(!token){
       if(!token){
             alert("you must login");
             navigate('/login')
@@ -14,6 +16,7 @@ const OptionsComponent=()=>{
               navigate('/cart')
     }
     const handleOrderClick=()=>{
+      if(!token){
       if(!token){
             alert("you must login");
             navigate('/login')

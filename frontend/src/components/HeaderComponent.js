@@ -57,8 +57,9 @@ import DropDownComponent from './DropDownComponent';
 
 function HeaderComponent() {
     return (
-        <>
-        <header className="container bg-color position-sticky">
+        
+        // <div className="px-3 py-2 bg-color text-dark border-bottom position-sticky  ">
+        <div className="container bg-color position-sticky">
             <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ">
                 
                 {/* <a href="/" className="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-decoration-none"></a> */}
@@ -76,8 +77,8 @@ function HeaderComponent() {
                 </ul>
                 
             </div>
-        </header>
-        </>
+        </div>
+    // </div>
         
     );
 }
