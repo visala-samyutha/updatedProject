@@ -41,7 +41,7 @@ async function placeOrder(req,res){
     try{
         const orders=new orderModel({ userId, items: [] });
         const cartItems=await cartModel.findOne({userId})
-        if(!cartItems){
+        if(!cartItems || cartItems.items.length==0){
                 return res.json({message:"cart is empty"})
         }
         console.log(cartItems)

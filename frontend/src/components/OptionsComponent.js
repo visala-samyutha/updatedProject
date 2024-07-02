@@ -1,10 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import {useState} from 'react'
+import {useAuth} from '../Provider/AuthProvider'
 const uid=localStorage.getItem("userId");
 const OptionsComponent=()=>{
+  const {token}=useAuth();
     const navigate=useNavigate()
     const handleCartClick=()=>{
-      if(uid==null){
+      if(!token){
             alert("you must login");
             navigate('/login')
           }
@@ -12,7 +14,7 @@ const OptionsComponent=()=>{
               navigate('/cart')
     }
     const handleOrderClick=()=>{
-      if(uid==null){
+      if(!token){
             alert("you must login");
             navigate('/login')
           }

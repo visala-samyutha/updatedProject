@@ -61,7 +61,7 @@ function HeaderComponent() {
     };
     return (
         
-        <div className="px-3 py-2 bg-color text-dark border-bottom position-sticky  ">
+        // <div className="px-3 py-2 bg-color text-dark border-bottom position-sticky  ">
         <div className="container bg-color position-sticky">
             <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ">
                 
@@ -90,7 +90,7 @@ function HeaderComponent() {
                 
             </div>
         </div>
-    </div>
+    // </div>
         
     );
 }
