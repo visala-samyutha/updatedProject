@@ -43,7 +43,6 @@ const ProductDetail = () => {
               <Card.Text><strong>Type:</strong> {product.type}</Card.Text>
               <Card.Text><strong>Description:</strong> {product.description}</Card.Text>
               <Card.Text><strong>Quantity:</strong> {product.quantity}</Card.Text>
-              <Button variant="none" className='button btn1'>Add to Cart</Button>
             </Card.Body>
           </Card>
         </Col>

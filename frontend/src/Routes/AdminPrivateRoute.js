@@ -11,7 +11,7 @@ const AdminPrivateRoute = () => {
         return <Navigate to="/login"/>
     }
     else if (role !== 'admin') {
-    alert('you cannot access this page')
+   // alert('you cannot access this page')
         return <Navigate to="/" />;
     }
     else{

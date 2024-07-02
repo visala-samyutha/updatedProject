@@ -21,6 +21,8 @@ import AdminPrivateRoute from './Routes/AdminPrivateRoute'
 import ProductDetail from './components/ProductDetail';
 import HomeProductDetail from './components/HomeProductDetail';
 import UserPrivateRoute from './Routes/UserPrivateRoute';
+import FooterComponent from './components/FooterComponent';
+import DropDownComponent from './components/DropDownComponent';
 function App() {
   return(
  <BrowserRouter>
@@ -45,7 +47,6 @@ function App() {
                    </Route>
   <Route path="/homeproduct/:id" exact element={<HomeProductDetail/>}></Route>
   </Routes>
- {/* <FooterComponent/> */}
  </AuthProvider>
  </BrowserRouter>
     

@@ -5,6 +5,7 @@ import { Button, Card, Container,Form,Row,Col,Dropdown } from 'react-bootstrap';
 import { useAuth } from "../Provider/AuthProvider";
 import OptionsComponent from './OptionsComponent';
 import '../ProductComponent.css'; 
+import FooterComponent from './FooterComponent';
 
 function HomeComponent() {
   const navigate=useNavigate();
@@ -60,7 +61,8 @@ function HomeComponent() {
     return(
        <>
        <OptionsComponent/>
-       <form className="col-12 col-lg-auto mb-2 mb-lg-0" role="search">
+       <br/>
+       <form className="col-4 mb-2 mb-lg-0" role="search">
          <input type="search" className="form-control" value={searchQuery} onChange={handleSearch} placeholder="Search..." aria-label="Search" />
     </form>
     <Container className="my-4">
@@ -123,6 +125,7 @@ function HomeComponent() {
                     )}
                 </Container>
             </Container>
+            <FooterComponent/>
             </>
     )
 }

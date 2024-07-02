@@ -45,6 +45,9 @@ function CartComponent() {
       fetchCartData();
       if (response.data.message !== 'cart is empty')
         navigate('/cartorder');
+      else{
+        navigate('/home')
+      }
     } catch (err) {
       console.log(err);
     }

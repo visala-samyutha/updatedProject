@@ -9,7 +9,7 @@ const UserPrivateRoute = () => {
         return <Navigate to="/login"/>
     }
     else if (role !== 'user') {
-        alert("you cant access this page")
+      //  alert("you cant access this page")
         return <Navigate to="/" />;
     }
     else{

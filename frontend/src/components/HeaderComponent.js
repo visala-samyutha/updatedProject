@@ -53,23 +53,17 @@ import { Link } from 'react-router-dom';
 import { useAuth } from "../Provider/AuthProvider";
 import '../style.css'
 import '../HeaderComponent.css'
+import DropDownComponent from './DropDownComponent';
+
 function HeaderComponent() {
-    const  {logOut}  = useAuth();
-    const handleLogout = () => {
-        console.log("Logout button clicked");
-        logOut();
-    };
     return (
-        
-        <div className="px-3 py-2 bg-color text-dark border-bottom position-sticky  ">
-        <div className="container bg-color position-sticky">
+        <>
+        <header className="container bg-color position-sticky">
             <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ">
                 
                 {/* <a href="/" className="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-decoration-none"></a> */}
+                <DropDownComponent/>
                 <ul  className="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-                    <li>
-                        <Link to="/product" className="btn btn-color text-dark me-2">AdminPage</Link>
-                    </li>
                     <li>
                         <Link to="/home" className="btn btn-color  text-dark me-2">Home</Link>
                     </li>
@@ -77,20 +71,13 @@ function HeaderComponent() {
                         <Link to="/login" className="btn btn-color  text-dark me-2">Login</Link>
                     </li>
                     <li>
-                    <button  onClick={handleLogout} className="btn btn-color1 text-dark me-2">Logout</button>
-                    </li>
-                    <li>
                         <Link to="/signup" className="btn btn-color  text-dark me-2">SignUp</Link>
                     </li>
-                    <li>
-                        <Link to="/pass" className="btn btn-color  text-dark me-2">ChangePassword</Link>
-                    </li>
-                    
                 </ul>
                 
             </div>
-        </div>
-    </div>
+        </header>
+        </>
         
     );
 }
