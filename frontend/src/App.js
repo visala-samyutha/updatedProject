@@ -4,7 +4,7 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 // import PaswordComponent from './components/PasswordComponent';
 import HeaderComponent from './components/HeaderComponent';
 // import PrivComponent from './components/PrivComponent';
-// import FooterComponent from './components/FooterComponent'
+ import Footer from './components/FooterComponent'
 import ProductComponent from './components/ProductComponent';
 import SignUpComponent from './components/SignupComponent';
 import HomeComponent from './components/HomeComponent';
@@ -23,11 +23,13 @@ import HomeProductDetail from './components/HomeProductDetail';
 import UserPrivateRoute from './Routes/UserPrivateRoute';
 import FooterComponent from './components/FooterComponent';
 import DropDownComponent from './components/DropDownComponent';
+import { ToastContainer } from 'react-toastify';
 function App() {
   return(
  <BrowserRouter>
   <AuthProvider>
     <HeaderComponent/>
+    <ToastContainer />
  <Routes>
  <Route path="/" exact element={<MainComponent/>}></Route>
   <Route path="/login" exact element={<LoginComponent/>}></Route>
@@ -47,7 +49,9 @@ function App() {
                    </Route>
   <Route path="/homeproduct/:id" exact element={<HomeProductDetail/>}></Route>
   </Routes>
+ 
  </AuthProvider>
+ <Footer/>
  </BrowserRouter>
     
   )

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify'; // Import toast from react-toastify
 import '../cartComponent.css'; 
 import '../style.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -33,23 +34,25 @@ function CartComponent() {
     try {
       await axios.post(`http://localhost:3002/cart/delete/${userId}/${productId}`);
       fetchCartData();
+      toast.success('Item deleted successfully'); // Success toast message
     } catch (err) {
       console.log(err);
+      toast.error('Error deleting item'); // Error toast message
     }
   };
 
   const handlePlaceOrder = async () => {
     try {
       const response = await axios.post(`http://localhost:3002/order/cart/${userId}`);
-      alert(response.data.message);
+      toast.success(response.data.message); // Success toast message
       fetchCartData();
       if (response.data.message !== 'cart is empty')
         navigate('/cartorder');
-      else{
-        navigate('/home')
-      }
+      else
+        navigate('/home');
     } catch (err) {
       console.log(err);
+      toast.error('Error placing order'); // Error toast message
     }
   };
 
@@ -58,11 +61,13 @@ function CartComponent() {
       const response = await axios.post(`http://localhost:3002/cart/incCart/${userId}/${productId}`);
       if (response.data.message === "cart items incremented") {
         fetchCartData();
+        toast.success('Cart item incremented'); // Success toast message
       } else {
-        alert(response.data.message);
+        toast.error(response.data.message); // Error toast message
       }
     } catch (err) {
       console.log(err);
+      toast.error('Error incrementing cart item'); // Error toast message
     }
   };
 
@@ -71,12 +76,14 @@ function CartComponent() {
       const response = await axios.post(`http://localhost:3002/cart/decCart/${userId}/${productId}`);
       if (response.data.message === "cart items decremented") {
         fetchCartData();
+        toast.success('Cart item decremented'); // Success toast message
       } else {
-        alert(response.data.message);
+        toast.error(response.data.message); // Error toast message
         fetchCartData();
       }
     } catch (err) {
       console.log(err);
+      toast.error('Error decrementing cart item'); // Error toast message
     }
   };
 
