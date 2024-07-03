@@ -54,3 +54,12 @@
     transform: rotate(360deg);
   }
 }
+/* src/App.css or in the same file within <style> tags */
+.square-box {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -62,10 +62,12 @@ function HomeComponent() {
        <>
        <OptionsComponent/>
        <br/>
+       
        <form className="col-4 mb-2 mb-lg-0" role="search">
          <input type="search" className="form-control" value={searchQuery} onChange={handleSearch} placeholder="Search..." aria-label="Search" />
     </form>
     <Container className="my-4">
+
                 <Row>
                     <Col className="text-right">
                         <Dropdown className="filter-dropdown">
@@ -83,17 +85,19 @@ function HomeComponent() {
                                         <option value="pink">Pink</option>
                                         <option value="black">Black</option>
                                         <option value="yellow">Yellow</option>
+                                        <option value="white">White</option>
                                     </Form.Control>
                                 </Form.Group>
                                 <Form.Group controlId="typeFilter">
                                     <Form.Label>Type</Form.Label>
                                     <Form.Control as="select" value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
                                         <option value="">All</option>
-                                        <option value="dress">Dress</option>
-                                        <option value="shirt">Shirt</option>
-                                        <option value="saree">Saree</option>
-                                        <option value="top">Top</option>
-                                        <option value="shoe">Shoe</option>
+                                        <option value="dress">dress</option>
+                                        <option value="shirt">shirt</option>
+                                        <option value="saree">saree</option>
+                                        <option value="top">top</option>
+                                        <option value="shoe">shoe</option>
+                                        <option value="pant">pant</option>
                                     </Form.Control>
                                 </Form.Group>
                                 <Form.Group controlId="priceFilter">
@@ -104,6 +108,8 @@ function HomeComponent() {
                                         <option value="500-1000">500-1000</option>
                                         <option value="1000-1500">1000-1500</option>
                                         <option value="1500-2000">1500-2000</option>
+                                        <option value="2000-5000">2000-5000</option>
+                                        <option value="5000-10000">5000-10000</option>
                                     </Form.Control>
                                 </Form.Group>
                             </Dropdown.Menu>
@@ -125,7 +131,7 @@ function HomeComponent() {
                     )}
                 </Container>
             </Container>
-           
+            {/* </div> */}
             </>
     )
 }

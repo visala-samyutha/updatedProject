@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from "../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import { FloatingLabel } from "react-bootstrap";
 
 const LoginComponent = () => {
     const [email, setEmail] = useState("");
@@ -32,14 +33,12 @@ const LoginComponent = () => {
                         <div className="card-body">
                             <h1 className="text-center mb-4">Login</h1>
                             <form onSubmit={(e)=>handleSubmit(e)}>
-                                <div className="mb-3">
-                                    <label htmlFor="uname" className="form-label">Email:</label>
-                                    <input type="email" id="uname" className="form-control" placeholder="Enter your email" autoFocus required onChange={(e) => setEmail(e.target.value)} />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="pass" className="form-label">Password:</label>
+                                <FloatingLabel label='Email:' className="mb-3">
+                                    <input type="email" id="uname" className="form-control" placeholder="Enter your email"  required onChange={(e) => setEmail(e.target.value)} />
+                                    </FloatingLabel>
+                                <FloatingLabel label='Password: 'className="mb-3"> 
                                     <input type="password" id="pass" className="form-control" placeholder="Enter your password" required onChange={(e) => setPassword(e.target.value)} />
-                                </div>
+                                </FloatingLabel>
                                 <div className="mb-3 form-check">
                                     <input type="checkbox" className="form-check-input" id="agreeCheckbox" checked={agreeTerms} onChange={(e) => setAgreeTerms(e.target.checked)} />
                                     <label className="form-check-label" htmlFor="agreeCheckbox">

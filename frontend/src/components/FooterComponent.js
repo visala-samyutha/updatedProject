@@ -21,24 +21,24 @@ const Footer = () => {
                         <div className='d-flex justify-content-center'>
                             <ul className='list list-inline'>
                                 <li className='list-inline-item'>
-                                    <Link to={''}>
+                                   
                                         <FacebookOutlinedIcon style={{ color: '#4267B2' }} />
-                                    </Link>
+                                    
                                 </li>
                                 <li className='list-inline-item'>
-                                    <Link to={''}>
+                                    
                                         <InstagramIcon style={{ color: '#E1306C' }} />
-                                    </Link>
+                                    
                                 </li>
                                 <li className='list-inline-item'>
-                                    <Link to={''}>
+                                    
                                         <YouTubeIcon style={{ color: '#FF0000' }} />
-                                    </Link>
+                                    
                                 </li>
                                 <li className='list-inline-item'>
-                                    <Link to={''}>
+                                   
                                         <TwitterIcon style={{ color: '#000000' }} />
-                                    </Link>
+                                    
                                 </li>
                             </ul>
                         </div>
