@@ -62,16 +62,25 @@ function HomeComponent() {
        <>
        <OptionsComponent/>
        <br/>
-       
-       <form className="col-4 mb-2 mb-lg-0" role="search">
+       {/* <div style={{ display: 'flex', alignItems: 'center' }}> */}
+       {/* <form className="col-4 mb-2 mb-lg-0" role="search" style={{marginRight: '20px'}}>
          <input type="search" className="form-control" value={searchQuery} onChange={handleSearch} placeholder="Search..." aria-label="Search" />
-    </form>
+    </form> */}
+    
+    {/* <Dropdown.Toggle style={{color:'purple',backgroundColor:'white',border:'white'}} id="dropdown-basic">
+                                Filters
+    </Dropdown.Toggle> */}
+        {/* </div> */}
     <Container className="my-4">
 
                 <Row>
+                <div style={{ display: 'flex', alignItems: 'center' }}> 
+                <form className="col-3 mb-2 mb-lg-0" role="search" style={{marginRight: '20px',backgroundColor: '#f2f2f2'}}>
+         <input type="search" className="form-control" value={searchQuery} onChange={handleSearch} placeholder="Search..." aria-label="Search" />
+    </form>
                     <Col className="text-right">
                         <Dropdown className="filter-dropdown">
-                            <Dropdown.Toggle style={{color:'purple',backgroundColor:'white',border:'white'}} id="dropdown-basic">
+                            <Dropdown.Toggle style={{color:'purple',backgroundColor: '#f2f2f2',border:'white'}} id="dropdown-basic">
                                 Filters
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
@@ -115,6 +124,7 @@ function HomeComponent() {
                             </Dropdown.Menu>
                         </Dropdown>
                     </Col>
+                    </div>
                 </Row>
                 <Container style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '20px' }}>
                     {fProducts.map((product) =>

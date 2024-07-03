@@ -29,10 +29,10 @@ const OptionsComponent = () => {
   return (
     <>
       <div className="container d-flex flex-wrap ">
-        <button className='btn-color' onClick={handleCartClick} style={{ marginRight: '20px', color: 'purple', backgroundColor: 'white', border: 'white' }}>
+        <button className='btn-color' onClick={handleCartClick} style={{ marginRight: '20px', color: 'purple',backgroundColor: '#f2f2f2', border: 'white' }}>
           <i className="fa-solid fa-cart-shopping"></i> Cart
         </button>
-        <button className='btn-color' onClick={handleOrderClick} style={{ height: '40px', color: 'purple', backgroundColor: 'white', border: 'white' }}>
+        <button className='btn-color' onClick={handleOrderClick} style={{ height: '40px', color: 'purple',backgroundColor: '#f2f2f2', border: 'white' }}>
           <i className="bi bi-bag-fill"></i> My Orders
         </button>
       </div>
