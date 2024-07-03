@@ -125,7 +125,7 @@ function HomeComponent() {
                     )}
                 </Container>
             </Container>
-            <FooterComponent/>
+           
             </>
     )
 }
