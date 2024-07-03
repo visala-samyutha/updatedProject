@@ -38,20 +38,38 @@ function DropDownComponent() {
        </div>
        {
         open &&(
-       <div  
-       className='bg-white p-4 w-52 shadow-lg absolute -left-14 top-24' style={{ zIndex: 9999 }}>
-        <ul>
+    //    <div  
+    //    className='bg-white p-4 w-52 shadow-lg absolute -right-5 top-24' style={{ zIndex: 9999 }}>
+    //     <ul>
+    //     <li className='p-2 cursor-pointer rounded hover:bg-purple-200' onClick={handleProduct}>
+    //         AdminPage
+    //          </li>
+    //     <li className='p-2 cursor-pointer rounded hover:bg-purple-200' onClick={handlePass}>
+    //         ChangePassword
+    //          </li>
+    //     <li className='p-2 cursor-pointer rounded hover:bg-purple-200' onClick={handleLogout}>
+    //         Logout
+    //          </li>
+    //     </ul>
+    //    </div>
+    //     )}
+    <div
+    className='bg-white p-2 w-30 shadow-lg absolute -right-2 top-24 border border-gray-300 rounded'
+    style={{ zIndex: 9999 }}
+>
+    <ul className='text-left'>
         <li className='p-2 cursor-pointer rounded hover:bg-purple-200' onClick={handleProduct}>
             AdminPage
-             </li>
+        </li>
         <li className='p-2 cursor-pointer rounded hover:bg-purple-200' onClick={handlePass}>
             ChangePassword
-             </li>
+        </li>
         <li className='p-2 cursor-pointer rounded hover:bg-purple-200' onClick={handleLogout}>
             Logout
-             </li>
-        </ul>
-       </div>
+        </li>
+    </ul>
+</div>
+
         )}
 </>
     )

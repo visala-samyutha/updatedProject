@@ -23,6 +23,7 @@ import HomeProductDetail from './components/HomeProductDetail';
 import UserPrivateRoute from './Routes/UserPrivateRoute';
 import FooterComponent from './components/FooterComponent';
 import DropDownComponent from './components/DropDownComponent';
+import AboutUsComponent from './components/AboutUsComponent';
 import { ToastContainer } from 'react-toastify';
 function App() {
   return(
@@ -37,6 +38,7 @@ function App() {
    <Route path="/term" exact element={<PrivComponent/>}></Route>
  <Route path="/signup" exact element={<SignUpComponent/>}></Route>
  <Route path='/home' element={<HomeComponent/>}></Route>
+ <Route path='/about' element={<AboutUsComponent/>}></Route>
  <Route  element={<UserPrivateRoute />}>
                     <Route path="/cart" exact element={<CartComponent/>}></Route>
                     <Route path="/order" exact element={<OrderComponent/>}></Route>
