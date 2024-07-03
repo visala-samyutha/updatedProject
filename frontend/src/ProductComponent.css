@@ -52,9 +52,9 @@ header, .search-bar {
 }
 
 .product-card .btn-danger {
-    background-color: #fff3cd; /* Pastel yellow background for delete button */
+    background-color: #cd572c; /* Pastel yellow background for delete button */
     border-color: #fff3cd;
-    color: #856404;
+    color:white;
 }
 
 .product-card .btn-danger:hover {

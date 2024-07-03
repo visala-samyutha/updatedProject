@@ -39,10 +39,20 @@ const HomeProductDetail = () => {
         navigate('/login');
         return;
       }
-
+      //  if(role!=="user"){
+      //   toast.error("you cannot access this page");
+      //   navigate('/home');
+      //  }
+       else{
       const response = await axios.post(`http://localhost:3002/home/${uid}/${pid}`);
-      toast.success(response.data.message); // Show success toast message
-      if (response.data.message === "Out of Stock") navigate('/home');
+      //toast.success(response.data.message); // Show success toast message
+      if (response.data.message === "Out of stock") {
+        toast.error("out of stock");
+        navigate('/home');
+      }
+      else{
+        toast.success("added to cart successfully");
+      }}
       //fetchProductData();
     } catch (error) {
       console.error("There was an error adding the product to the cart:", error);
@@ -56,15 +66,23 @@ const HomeProductDetail = () => {
         navigate('/login');
         return;
       }
-
+      // if(role!=="user"){
+      //   toast.error("you cannot access this page");
+      //   navigate('/home');
+      // }
+      else{
       const response = await axios.post(`http://localhost:3002/order/direct/${uid}/${pid}`);
-      toast.success(response.data.message); // Show success toast message
-      if (response.data.message === "Out of stock") navigate('/home');
+       // Show success toast message
+      if (response.data.message === "Out of stock") {
+        toast.error("out of stock");
+        navigate('/home');
+      }
       else {
+        toast.success("placed successfully");
         setProductId(pid);
         //fetchProductData();
         navigate('/homeorder');
-      }
+      }}
     } catch (error) {
       console.log(error);
     }

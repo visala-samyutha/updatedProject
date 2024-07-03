@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'; // Import toast from react-toastify
 import 'react-toastify/dist/ReactToastify.css';
 
 const OptionsComponent = () => {
+  const role=localStorage.getItem('role');
   const { token } = useAuth();
   const navigate = useNavigate();
 
@@ -12,7 +13,8 @@ const OptionsComponent = () => {
     if (!token) {
       toast.error('You must login'); // Error toast message
       navigate('/login');
-    } else {
+    } 
+    else {
       navigate('/cart');
     }
   };
@@ -33,7 +35,7 @@ const OptionsComponent = () => {
           <i className="fa-solid fa-cart-shopping"></i> Cart
         </button>
         <button className='btn-color' onClick={handleOrderClick} style={{ height: '40px', color: 'purple',backgroundColor: '#f2f2f2', border: 'white' }}>
-          <i className="bi bi-bag-fill"></i> My Orders
+        {/* <FontAwesomeIcon icon="fa-solid fa-bag-shopping" />*/} My Orders 
         </button>
       </div>
     </>

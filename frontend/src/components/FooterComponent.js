@@ -18,6 +18,11 @@ const Footer = () => {
                 </div>
                 <div className='row'>
                     <div className='col-md-12 text-center'>
+                        <p>Contact us : 6303690238</p>
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='col-md-12 text-center'>
                         <div className='d-flex justify-content-center'>
                             <ul className='list list-inline'>
                                 <li className='list-inline-item'>
