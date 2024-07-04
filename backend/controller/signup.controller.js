@@ -116,6 +116,16 @@ async function getUserData(req, res) {
         res.status(500).json({ message: "Internal server error", error: error.message });
     }
 }
+async function deleteAcc(req,res){
+    try{
+        const {id}=req.params;
+        const user=await signModel.findByIdAndDelete(id);
+        res.status(200).json({"message":`user ${id} is deleted`});
+    }
+    catch(error){
+        res.status(400).json({"message":"error in deleting user"});
+    }
+}
 async function updateUserProfile(req, res) {
     try {
         const {id }=req.params;
@@ -140,4 +150,4 @@ async function updateUserProfile(req, res) {
     }
 }
 
-module.exports = { saveUser, checkUser, updatePassword, getUserData, updateUserProfile };
+module.exports = { saveUser, checkUser, updatePassword, getUserData, updateUserProfile,deleteAcc};

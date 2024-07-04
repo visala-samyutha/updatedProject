@@ -131,8 +131,8 @@ function HomeComponent() {
                         <Card className="product-card" key={product._id} style={{ width: '20rem' }}>
                             <Card.Img variant="top" src={product.imageUrl} style={{ height: '250px', width: '20rem' }} />
                             <Card.Body>
-                                <Card.Text>Product Name: {product.productName}</Card.Text>
-                                <Card.Text>Product Price: {product.price}</Card.Text>
+                                <Card.Text> {product.productName}</Card.Text>
+                                <Card.Text>Price:Rs {product.price}</Card.Text>
                                 <div className="d-flex justify-content-between">
                                     <Button variant="link" onClick={() => handleSingleProduct(product._id)}>See More</Button>
                                 </div>

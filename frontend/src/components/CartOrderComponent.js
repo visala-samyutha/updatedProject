@@ -5,6 +5,7 @@ import { Container, Row, Col, Card, CardBody,CardHeader} from 'react-bootstrap';
 function CartOrderComponent(){
     const [orders, setOrders] = useState([]);
     const[tprice,setTotal]=useState(0);
+    const [date,setDate]=useState();
     
     useEffect(() => {
       fetchOrders();
@@ -15,6 +16,9 @@ function CartOrderComponent(){
                 const response = await axios.get(`http://localhost:3002/cart/${id}`);
                 setOrders(response.data.items)
                 setTotal(response.data.tprice);
+                const now=new Date();
+                const formattedDate=now.toLocaleString();
+                setDate(formattedDate);
 
             } catch (err) {
                 console.error(err);
@@ -48,14 +52,17 @@ function CartOrderComponent(){
                                                     <p className="text-muted mb-0 small">Qty: {order.quantity}</p>
                                                 </Col>
                                                 <Col md={2} className="text-center d-flex justify-content-center align-items-center">
-                                                    <p className="text-muted mb-0 small">Price: ${order.price/order.quantity}</p>
+                                                    <p className="text-muted mb-0 small">Price: Rs.{order.price/order.quantity}</p>
+                                                </Col>
+                                                <Col md={2} className="text-center d-flex justify-content-center align-items-center">
+                                                    <p className="text-muted mb-0 small">Date: {date}</p>
                                                 </Col>
                                             </Row>
                                             <hr className="mb-4" style={{ backgroundColor: '#e0e0e0', opacity: 1 }} />
                                             <div className="row d-flex align-items-center">
                                                 <div className="d-flex justify-content-between pt-2">
                                                     <p className="fw-bold mb-0">Order Details</p>
-                                                    <p className="text-muted mb-0"><span className="fw-bold me-4">Total</span>${order.price}</p>
+                                                    <p className="text-muted mb-0"><span className="fw-bold me-4">Total</span>Rs.{order.price}</p>
                                                 </div>
                                                 <div className="d-flex justify-content-between mb-5">
                                                     <p className="text-muted mb-0">Receipt Voucher:{order.id}</p>
@@ -74,7 +81,7 @@ function CartOrderComponent(){
             <Col lg={10} xl={8}>
             <Card className="border-0 px-4 py-5" style={{ backgroundColor: 'purple', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px' }}>
                 <h5 className="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
-                    Total Paid: <span className="h2 mb-0 ms-2">${tprice}</span>
+                    Total Paid: <span className="h2 mb-0 ms-2">Rs.{tprice}</span>
                 </h5>
             </Card>
             </Col>

@@ -8,7 +8,7 @@ const HomeOrderComponent = () => {
   const { productId } = useAuth();
   const [product, setProduct] = useState({});
   const [tprice, setTotal] = useState(0);
-
+  const [date,setDate]=useState();
   useEffect(() => {
     fetchOrders();
   }, []);
@@ -20,6 +20,9 @@ const HomeOrderComponent = () => {
       console.log(typeof(response.data));
       setProduct(response.data);
       setTotal(response.data.price);
+      const now=new Date();
+     const formattedDate=now.toLocaleString();
+     setDate(formattedDate);
       console.log(product);
     } catch (err) {
       console.log(err);
@@ -53,14 +56,17 @@ const HomeOrderComponent = () => {
                                                     <p className="text-muted mb-0 small">Qty: 1</p>
                                                 </Col>
                                                 <Col md={2} className="text-center d-flex justify-content-center align-items-center">
-                                                    <p className="text-muted mb-0 small">Price: ${product.price}</p>
+                                                    <p className="text-muted mb-0 small">Price: Rs.{product.price}</p>
+                                                </Col>
+                                                <Col md={2} className="text-center d-flex justify-content-center align-items-center">
+                                                    <p className="text-muted mb-0 small">Date: {date}</p>
                                                 </Col>
                                             </Row>
                                             <hr className="mb-4" style={{ backgroundColor: '#e0e0e0', opacity: 1 }} />
                                             <div className="row d-flex align-items-center">
                                                 <div className="d-flex justify-content-between pt-2">
                                                     <p className="fw-bold mb-0">Order Details</p>
-                                                    <p className="text-muted mb-0"><span className="fw-bold me-4">Total</span>${product.price}</p>
+                                                    <p className="text-muted mb-0"><span className="fw-bold me-4">Total</span>Rs.{product.price}</p>
                                                 </div>
                                                 <div className="d-flex justify-content-between mb-5">
                                                     <p className="text-muted mb-0">Receipt Voucher:{product._id}</p>
@@ -78,7 +84,7 @@ const HomeOrderComponent = () => {
             <Col lg={10} xl={8}>
             <Card className="border-0 px-4 py-5" style={{ backgroundColor: 'purple', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px' }}>
                                     <h5 className="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
-                                        Total Paid: <span className="h2 mb-0 ms-2">${tprice}</span>
+                                        Total Paid: <span className="h2 mb-0 ms-2">Rs.{tprice}</span>
                                     </h5>
             </Card>
             </Col>

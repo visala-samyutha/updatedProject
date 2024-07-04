@@ -61,7 +61,7 @@ function CartComponent() {
       const response = await axios.post(`http://localhost:3002/cart/incCart/${userId}/${productId}`);
       if (response.data.message === "cart items incremented") {
         fetchCartData();
-        toast.success('Cart item incremented'); // Success toast message
+        toast.success('Cart item incremented',{autoClose:500}); // Success toast message
       } else {
         toast.error(response.data.message); // Error toast message
       }
@@ -76,7 +76,7 @@ function CartComponent() {
       const response = await axios.post(`http://localhost:3002/cart/decCart/${userId}/${productId}`);
       if (response.data.message === "cart items decremented") {
         fetchCartData();
-        toast.success('Cart item decremented'); // Success toast message
+        toast.success('Cart item decremented',{autoClose:500}); // Success toast message
       } else {
         toast.error(response.data.message); // Error toast message
         fetchCartData();
@@ -110,7 +110,7 @@ function CartComponent() {
                   <Card.Body>
                    <Card.Title style={{ fontSize: '1rem' }}>{cart.productName}</Card.Title>
                     <Card.Text>Quantity: {cart.quantity}</Card.Text>
-                    <Card.Text>Price: ${cart.price}</Card.Text>
+                    <Card.Text>Price: Rs.{cart.price}</Card.Text>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
                       <Button variant='light' onClick={() => handleDecrement(cart.productId)} style={{ border: 'none', background: 'none', cursor: 'pointer' }}>
                         <i className="fas fa-minus-circle"></i>

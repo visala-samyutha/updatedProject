@@ -45,12 +45,12 @@ function App() {
                     <Route path="/homeorder" exact element={<HomeOrderComponent/>}></Route>
                     <Route path="/cartorder" exact element={<CartOrderComponent/>}></Route>
                     <Route path="/profile" element={<ProfileComponent />} />
+                    <Route path="/homeproduct/:id" exact element={<HomeProductDetail/>}></Route>
                    </Route>
  <Route  element={<AdminPrivateRoute />}>
                     <Route path='/product' element={<ProductComponent/>}></Route>
                     <Route path="/product/:id" element={<ProductDetail />} />
                    </Route>
-  <Route path="/homeproduct/:id" exact element={<HomeProductDetail/>}></Route>
   </Routes>
  
  </AuthProvider>

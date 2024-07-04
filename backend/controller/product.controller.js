@@ -28,7 +28,7 @@ async function addToCart(req, res) {
                 productId,
                 productName: product.productName,
                 quantity,
-                price: quantity
+                price:product.price
             });
         }
         await cart.save();

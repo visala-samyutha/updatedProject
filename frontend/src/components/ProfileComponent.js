@@ -3,6 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Button} from 'react-bootstrap'
 
 const ProfileComponent = () => {
   const navigate = useNavigate();
@@ -14,7 +15,6 @@ const ProfileComponent = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [mobileNumber, setMobileNumber] = useState('');
- 
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -57,6 +57,18 @@ const ProfileComponent = () => {
     }
   };
 
+  const handleProfileDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:3002/signup/user/${id}`);
+      localStorage.removeItem('userId');
+      localStorage.removeItem('token');
+      toast.success('User deleted successfully');
+      navigate('/login');
+    } catch (error) {
+      toast.error('Error deleting profile');
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -78,20 +90,12 @@ const ProfileComponent = () => {
   if (loading) return <div>Loading...</div>;
   if (error) {
     toast.error(error);
-    navigate('/home');
+    return null;
   }
 
   return (
     <div className="container">
       <div className="main-body">
-        <nav aria-label="breadcrumb" className="main-breadcrumb">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item"><a href="/">Home</a></li>
-            <li className="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-            <li className="breadcrumb-item active" aria-current="page">User Profile</li>
-          </ol>
-        </nav>
-
         <div className="row gutters-sm">
           <div className="col-md-4 mb-3">
             <div className="card">
@@ -101,8 +105,9 @@ const ProfileComponent = () => {
                   <div className="mt-3">
                     <h4>{user.username}</h4>
                     <p className="text-secondary mb-1">Full Stack Developer</p>
-                    <button className="btn btn-primary" onClick={handleCartClick}>Cart</button>
-                    <button className="btn btn-outline-primary" onClick={handleOrderClick}>My Orders</button>
+                    <Button variant="none" className="button"  onClick={handleCartClick} style={{color:'purple'}}>Cart</Button>
+                    <Button variant='none' className="button" onClick={handleOrderClick} style={{color:'purple'}}>My Orders</Button><br/><br/>
+                    <Button className='btn btn-danger' onClick={handleProfileDelete}>Delete Account</Button>
                   </div>
                 </div>
               </div>
@@ -115,7 +120,7 @@ const ProfileComponent = () => {
                   <>
                     <div className="row">
                       <div className="col-sm-3">
-                        <h6 className="mb-0">Full Name</h6>
+                        <h6 className="mb-0">UserName</h6>
                       </div>
                       <div className="col-sm-9 text-secondary">
                         {user.username}
@@ -142,7 +147,7 @@ const ProfileComponent = () => {
                     <hr />
                     <div className="row">
                       <div className="col-sm-12">
-                        <button className="btn btn-info" onClick={handleEditToggle}>Edit</button>
+                        <Button variant='none' className="button" onClick={handleEditToggle} style={{color:'purple'}}>Edit</Button>
                       </div>
                     </div>
                   </>
@@ -150,7 +155,7 @@ const ProfileComponent = () => {
                   <form onSubmit={handleSubmit}>
                     <div className="row">
                       <div className="col-sm-3">
-                        <h6 className="mb-0">Full Name</h6>
+                        <h6 className="mb-0">UserName</h6>
                       </div>
                       <div className="col-sm-9 text-secondary">
                         <input 
@@ -193,7 +198,7 @@ const ProfileComponent = () => {
                     <div className="row">
                       <div className="col-sm-12">
                         <button className="btn btn-primary" type="submit">Save</button>
-                        <button className="btn btn-secondary ml-2" onClick={handleEditToggle}>Cancel</button>
+                        <button className="btn btn-secondary ml-2" type="button" onClick={handleEditToggle}>Cancel</button>
                       </div>
                     </div>
                   </form>

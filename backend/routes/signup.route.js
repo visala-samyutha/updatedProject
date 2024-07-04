@@ -1,7 +1,7 @@
 const express=require('express');
 const jwt=require('jsonwebtoken');
 const signModel=require('../model/signup.model');
-const {saveUser,checkUser,updatePassword, getUserData, updateUserProfile}=require('../controller/signup.controller')
+const {saveUser,checkUser,updatePassword, getUserData, updateUserProfile, deleteAcc}=require('../controller/signup.controller')
 
 
 const productModel=require('../model/product.model');
@@ -14,5 +14,6 @@ routes.post('/login',checkUser);
 routes.put('/update',updatePassword);
 routes.get('/user/:id',getUserData);
 routes.put('/user/:id',updateUserProfile)
+routes.delete('/user/:id',deleteAcc);
 
 module.exports=routes;
