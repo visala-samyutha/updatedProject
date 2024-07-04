@@ -21,10 +21,10 @@ import AdminPrivateRoute from './Routes/AdminPrivateRoute'
 import ProductDetail from './components/ProductDetail';
 import HomeProductDetail from './components/HomeProductDetail';
 import UserPrivateRoute from './Routes/UserPrivateRoute';
-import FooterComponent from './components/FooterComponent';
-import DropDownComponent from './components/DropDownComponent';
+
 import AboutUsComponent from './components/AboutUsComponent';
 import { ToastContainer } from 'react-toastify';
+import ProfileComponent from './components/ProfileComponent';
 function App() {
   return(
  <BrowserRouter>
@@ -44,6 +44,7 @@ function App() {
                     <Route path="/order" exact element={<OrderComponent/>}></Route>
                     <Route path="/homeorder" exact element={<HomeOrderComponent/>}></Route>
                     <Route path="/cartorder" exact element={<CartOrderComponent/>}></Route>
+                    <Route path="/profile" element={<ProfileComponent />} />
                    </Route>
  <Route  element={<AdminPrivateRoute />}>
                     <Route path='/product' element={<ProductComponent/>}></Route>

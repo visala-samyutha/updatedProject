@@ -21,6 +21,9 @@ function DropDownComponent() {
         console.log("Logout button clicked");
         logOut();
     };
+    const handleProfile=()=>{
+        navigate('/profile');
+    }
     const handleProduct=()=>{
         navigate('/product')
     }
@@ -58,6 +61,9 @@ function DropDownComponent() {
     style={{ zIndex: 9999 }}
 >
     <ul className='text-left'>
+    <li className='p-2 cursor-pointer rounded hover:bg-purple-200' onClick={handleProfile}>
+            UserProfile
+        </li>
         <li className='p-2 cursor-pointer rounded hover:bg-purple-200' onClick={handleProduct}>
             AdminPage
         </li>

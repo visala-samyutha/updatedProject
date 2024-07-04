@@ -101,6 +101,43 @@ async function updatePassword(req, res) {
         res.status(500).json({ message: "Internal server error", error: error.message });
     }
 }
+async function getUserData(req, res) {
+    try {
+        const { id } = req.params;
+        const user = await signModel.findById(id, '-password'); // Exclude the password field
 
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
 
-module.exports = { saveUser, checkUser, updatePassword };
+        res.status(200).json({ user });
+    } catch (error) {
+        console.error('Error in getUserData:', error.message);
+        res.status(500).json({ message: "Internal server error", error: error.message });
+    }
+}
+async function updateUserProfile(req, res) {
+    try {
+        const {id }=req.params;
+        const { username, email, mobileNumber } = req.body;
+        const user = await signModel.findById(id);
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Update the user details
+        user.username = username;
+        user.email = email;
+        user.mobileNumber = mobileNumber;
+
+        await user.save();
+
+        res.status(200).json({ message: "Profile updated successfully", user });
+    } catch (error) {
+        console.error('Error in updateUserProfile:', error.message);
+        res.status(500).json({ message: "Internal server error", error: error.message });
+    }
+}
+
+module.exports = { saveUser, checkUser, updatePassword, getUserData, updateUserProfile };
