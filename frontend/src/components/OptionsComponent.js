@@ -35,7 +35,7 @@ const OptionsComponent = () => {
           <i className="fa-solid fa-cart-shopping"></i> Cart
         </button>
         <button className='btn-color' onClick={handleOrderClick} style={{ height: '40px', color: 'purple',backgroundColor: '#f2f2f2', border: 'white' }}>
-        {/* <FontAwesomeIcon icon="fa-solid fa-bag-shopping" />*/} My Orders 
+        <i class="fa-solid fa-bag-shopping"></i> My Orders 
         </button>
       </div>
     </>

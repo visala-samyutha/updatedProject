@@ -216,7 +216,7 @@ const HomeProductDetail = () => {
             <Card className="product-info-card">
               <Card.Body>
                 <center><h1><Card.Title className="product-title">{product.productName}</Card.Title></h1></center>
-                <Card.Text className="product-price"><strong>Price:</strong> Rs.{product.price}</Card.Text>
+                <Card.Text className="product-price"><strong>Price: </strong><i class="fa-solid fa-rupee-sign"></i>{product.price}</Card.Text>
                 <Card.Text className="product-color"><strong>Color:</strong> {product.color}</Card.Text>
                 <Card.Text className="product-type"><strong>Type:</strong> {product.type}</Card.Text>
                 <Card.Text className="product-description"><strong>Description:</strong> {product.description}</Card.Text>

@@ -1,11 +1,13 @@
 import { useState } from "react";
-
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from "../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import { FloatingLabel } from "react-bootstrap";
-
+// import { LinearGradient } from 'react-native-Linear-Gradient'
+// import { FloatingLabel } from "react-bootstrap";
+ import '../LoginComponent.css';
+//  import '../Linear.css'
 const LoginComponent = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -27,6 +29,7 @@ const LoginComponent = () => {
     };
 
     return (
+      
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-md-6">
@@ -34,12 +37,16 @@ const LoginComponent = () => {
                         <div className="card-body">
                             <h1 className="text-center mb-4">Login</h1>
                             <form onSubmit={(e)=>handleSubmit(e)}>
-                                <FloatingLabel label='Email:' className="mb-3">
-                                    <input type="email" id="uname" className="form-control" placeholder="Enter your email"  required onChange={(e) => setEmail(e.target.value)} />
-                                    </FloatingLabel>
-                                <FloatingLabel label='Password: 'className="mb-3"> 
+                                    <div className="form-floating mb-3">
+                                    <i class="icon fa-regular fa-envelope"></i>
+                                      <input type="email" id="uname" className="form-control" placeholder="Enter your email"  required onChange={(e) => setEmail(e.target.value)} />
+                                      <label for='uname'>Email</label>
+                                      </div>
+                                      <div className="form-floating mb-3">
+                                      <i class="icon fa-solid fa-key"></i>
                                     <input type="password" id="pass" className="form-control" placeholder="Enter your password" required onChange={(e) => setPassword(e.target.value)} />
-                                </FloatingLabel>
+                                    <label for='pass'>Password</label>
+                                    </div>
                                 <div className="mb-3 form-check">
                                     <input type="checkbox" className="form-check-input" id="agreeCheckbox" checked={agreeTerms} onChange={(e) => setAgreeTerms(e.target.checked)} required />
                                     <label className="form-check-label" htmlFor="agreeCheckbox">
@@ -56,6 +63,7 @@ const LoginComponent = () => {
                 </div>
             </div>
         </div>
+     
     );
 }
 

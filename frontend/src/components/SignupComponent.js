@@ -107,23 +107,31 @@ const SignUpComponent = () => {
                         <div className="card-body">
                             <h1 className="text-center mb-4">Sign Up</h1>
                             <form onSubmit={handleSubmit}>
-                                <FloatingLabel label="Email :" className="mb-3">
+                            <div className="form-floating mb-3">
+                                     <i class="icon fa-regular fa-envelope"></i>
                                     <input type="email" id="email" className="form-control" placeholder="Enter your email" required onChange={(e) => setEmail(e.target.value)} />
-                                </FloatingLabel>
-                                <FloatingLabel label="Password :" className="mb-3">
+                                    <label htmlFor="email">Email</label>
+                                 </div>
+                                 <div className="form-floating mb-3">
+                                     <i class="icon fa-solid fa-key"></i>
                                     <input type="password" id="pass" className="form-control" placeholder="Enter your password" required onChange={handlePasswordChange} />
                                     {password && (
                                         <div className={`mt-2 ${passwordStrength === 'strong' ? 'text-success' : 'text-danger'}`}>
                                             Password is {passwordStrength}
                                         </div>
                                     )}
-                                </FloatingLabel>
-                                <FloatingLabel label="UserName :" className="mb-3">
+                                <label>Password</label>
+                                </div>
+                                <div className="form-floating mb-3">
+                                    <i class="icon fa-solid fa-user-tie"></i>
                                     <input type="text" id="username" className="form-control" placeholder="Enter your username" required onChange={handleUsernameChange} />
-                                </FloatingLabel>
-                                <FloatingLabel label="Mobile Number :" className="mb-3">
+                                      <label for='uname'>Username</label>
+                                      </div>
+                                <div className="form-floating mb-3">
+                                    <i class=" icon fa-solid fa-phone"></i>
                                     <input type="text" id="mobileNumber" className="form-control" placeholder="Enter your phone number" required onChange={handleMobileNumberChange} value={mobileNumber} />
-                                </FloatingLabel>
+                                <label>Phone</label>
+                                </div>
                                 <div className="mb-3 form-check">
                                     <input type="checkbox" className="form-check-input" id="agreeCheckbox" required />
                                     <label className="form-check-label" htmlFor="agreeCheckbox">
