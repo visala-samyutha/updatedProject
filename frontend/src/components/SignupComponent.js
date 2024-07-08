@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const SignUpComponent = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [username, setUsername] = useState('');
     const [mobileNumber, setMobileNumber] = useState('');
     const [passwordStrength, setPasswordStrength] = useState('');
@@ -33,6 +34,12 @@ const SignUpComponent = () => {
         const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
         if (!passwordRegex.test(password)) {
             toast.error('Password must be at least 8 characters long, contain at least 1 uppercase letter, 1 special character, and 1 digit');
+            return;
+        }
+
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            toast.error('Passwords do not match');
             return;
         }
 
@@ -71,9 +78,19 @@ const SignUpComponent = () => {
         checkPasswordStrength(value, username);
     };
 
+    const handleConfirmPasswordChange = (e) => {
+        const value = e.target.value;
+        setConfirmPassword(value);
+    };
+
     const handleUsernameChange = (e) => {
         const value = e.target.value;
         setUsername(value);
+        const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]*$/;
+
+        if (!usernameRegex.test(value)) {
+            toast.error('Username must start with a letter and contain only letters and digits');
+        }
         checkPasswordStrength(password, value);
     };
 
@@ -107,30 +124,35 @@ const SignUpComponent = () => {
                         <div className="card-body">
                             <h1 className="text-center mb-4">Sign Up</h1>
                             <form onSubmit={handleSubmit}>
-                            <div className="form-floating mb-3">
-                                     <i class="icon fa-regular fa-envelope"></i>
+                                <div className="form-floating mb-3">
+                                    <i className="icon fa-regular fa-envelope"></i>
                                     <input type="email" id="email" className="form-control" placeholder="Enter your email" required onChange={(e) => setEmail(e.target.value)} />
                                     <label htmlFor="email">Email</label>
-                                 </div>
-                                 <div className="form-floating mb-3">
-                                     <i class="icon fa-solid fa-key"></i>
+                                </div>
+                                <div className="form-floating mb-3">
+                                    <i className="icon fa-solid fa-key"></i>
                                     <input type="password" id="pass" className="form-control" placeholder="Enter your password" required onChange={handlePasswordChange} />
                                     {password && (
                                         <div className={`mt-2 ${passwordStrength === 'strong' ? 'text-success' : 'text-danger'}`}>
                                             Password is {passwordStrength}
                                         </div>
                                     )}
-                                <label>Password</label>
+                                    <label>Password</label>
                                 </div>
                                 <div className="form-floating mb-3">
-                                    <i class="icon fa-solid fa-user-tie"></i>
-                                    <input type="text" id="username" className="form-control" placeholder="Enter your username" required onChange={handleUsernameChange} />
-                                      <label for='uname'>Username</label>
-                                      </div>
+                                    <i className="icon fa-solid fa-key"></i>
+                                    <input type="password" id="confirmPass" className="form-control" placeholder="Re-enter your password" required onChange={handleConfirmPasswordChange} />
+                                    <label>Confirm Password</label>
+                                </div>
                                 <div className="form-floating mb-3">
-                                    <i class=" icon fa-solid fa-phone"></i>
+                                    <i className="icon fa-solid fa-user-tie"></i>
+                                    <input type="text" id="username" className="form-control" placeholder="Enter your username" required onChange={handleUsernameChange} />
+                                    <label htmlFor='username'>Username</label>
+                                </div>
+                                <div className="form-floating mb-3">
+                                    <i className="icon fa-solid fa-phone"></i>
                                     <input type="text" id="mobileNumber" className="form-control" placeholder="Enter your phone number" required onChange={handleMobileNumberChange} value={mobileNumber} />
-                                <label>Phone</label>
+                                    <label>Phone</label>
                                 </div>
                                 <div className="mb-3 form-check">
                                     <input type="checkbox" className="form-check-input" id="agreeCheckbox" required />
