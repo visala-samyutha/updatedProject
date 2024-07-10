@@ -6,6 +6,7 @@ function CartOrderComponent(){
     const [orders, setOrders] = useState([]);
     const[tprice,setTotal]=useState(0);
     const [date,setDate]=useState();
+    const [gender, setGender] = useState('');
     
     useEffect(() => {
       fetchOrders();
@@ -19,6 +20,7 @@ function CartOrderComponent(){
                 const now=new Date();
                 const formattedDate=now.toLocaleString();
                 setDate(formattedDate);
+                setGender(response.data.gender);
 
             } catch (err) {
                 console.error(err);
@@ -53,6 +55,9 @@ function CartOrderComponent(){
                                                 </Col>
                                                 <Col md={2} className="text-center d-flex justify-content-center align-items-center">
                                                     <p className="text-muted mb-0 small">Price: Rs.{order.price/order.quantity}</p>
+                                                </Col>
+                                                <Col md={2} className="text-center d-flex justify-content-center align-items-center">
+                                                    <p className="text-muted mb-0 small">Category: {order.gender}</p>
                                                 </Col>
                                                 <Col md={2} className="text-center d-flex justify-content-center align-items-center">
                                                     <p className="text-muted mb-0 small">Date: {date}</p>

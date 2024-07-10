@@ -8,6 +8,7 @@ function DropDownComponent() {
     const navigate=useNavigate();
   const menus=['profile','your apps']
   const [open,setOpen]=useState(false);
+  const {name}=useAuth();
    const menuRef=useRef();
    const imgRef=useRef();
 
@@ -48,6 +49,7 @@ function DropDownComponent() {
     style={{ zIndex: 9999 }}
 >
     <ul className='text-left'>
+        {/* <h5>Welcome {name}</h5> */}
     <li className='p-2 cursor-pointer rounded hover:bg-purple-200' onClick={handleProfile}>
             UserProfile
         </li>
@@ -55,11 +57,12 @@ function DropDownComponent() {
             AdminPage
         </li>
         
-        <li className='p-2 cursor-pointer rounded hover:bg-purple-200' onClick={handleLogout}>
-            Logout
-        </li>
+        
         <li className='p-2 cursor-pointer rounded hover:bg-purple-200' onClick={handleWishlist}>
             Wishlist
+        </li>
+        <li className='p-2 cursor-pointer rounded hover:bg-purple-200' onClick={handleLogout}>
+            Logout
         </li>
     </ul>
 </div>

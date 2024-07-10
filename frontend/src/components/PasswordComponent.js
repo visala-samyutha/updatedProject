@@ -4,12 +4,13 @@ import { Card, FloatingLabel, Form, Button } from "react-bootstrap";
 import '../App.css';
 import { toast } from 'react-toastify'; // Import toast from react-toastify
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 const PasswordComponent = () => {
     const [currentPassword, setCurrentPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (newPassword !== confirmPassword) {
@@ -24,6 +25,7 @@ const PasswordComponent = () => {
                 newPassword: newPassword
             });
             toast.success('Password updated successfully');
+            navigate('/login');
         } catch (error) {
             console.error('Error updating password:', error);
             toast.error('Error updating password');

@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Form, Card, Container, Button, Modal, Row, Col ,FloatingLabel} from 'react-bootstrap';
+import { Form, Card, Container, Button, Modal, Row, Col, FloatingLabel } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import '../ProductComponent.css'; // Import the custom CSS file
 
@@ -16,7 +16,8 @@ const ProductComponent = () => {
         color: "",
         type: "",
         description: "",
-        quantity: ""
+        quantity: "",
+        gender: "" // Added gender field
     });
     const [colorFilter, setColorFilter] = useState('');
     const [typeFilter, setTypeFilter] = useState('');
@@ -87,7 +88,8 @@ const ProductComponent = () => {
             color: "",
             type: "",
             description: "",
-            quantity: ""
+            quantity: "",
+            gender: "" // Reset gender field
         });
         setEditProduct(null);
         setShow(false);
@@ -105,7 +107,8 @@ const ProductComponent = () => {
             color: product.color,
             type: product.type,
             description: product.description,
-            quantity: product.quantity
+            quantity: product.quantity,
+            gender: product.gender // Populate gender field
         });
         setEditProduct(product);
         setShow(true);
@@ -135,30 +138,13 @@ const ProductComponent = () => {
                         color: "",
                         type: "",
                         description: "",
-                        quantity: ""
+                        quantity: "",
+                        gender: "" // Reset gender field
                     });
                     setEditProduct(null);
                     setShow(true);
                 }}>Add Product</Button>
             </div>
-
-             {/* <h2 className="mt-5 text-center">Filter Products</h2>
-            <div className="d-flex justify-content-center mb-4">
-                <Form.Control as="select" value={colorFilter} onChange={(e) => setColorFilter(e.target.value)} className="mr-2">
-                    <option value="">All Colors</option>
-                    <option value="red">Red</option>
-                    <option value="blue">Blue</option>
-                    <option value="green">Green</option>
-                     Add more colors as needed 
-                </Form.Control>
-                <Form.Control as="select" value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
-                    <option value="">All Types</option>
-                    <option value="dress">Dress</option>
-                    <option value="shirt">Shirt</option>
-                    <option value="saree">Saree</option> */}
-                    {/* Add more types as needed */}
-                {/* </Form.Control>
-            </div> */}
 
             <h2 className="mt-5 text-center">Product List</h2>
             <Row>
@@ -188,41 +174,46 @@ const ProductComponent = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={handleSubmit}>
-                    <Form.Group controlId="ImageUl">
-                     <FloatingLabel controlId='floatingInput' label="ImageUrl : " className='mb-3'>   
-                         <Form.Control type="text" placeholder="image"name="imageUrl" value={formData.imageUrl} onChange={handleChange} required />
-                     </FloatingLabel>
-                 </Form.Group>
-                 <Form.Group controlId="formProductName">
-                     <FloatingLabel controlId='floatingInput' label="Product Name : " className='mb-3'>   
-                         <Form.Control type="text" name="productName" placeholder='productName' value={formData.productName} onChange={handleChange} required />
-                     </FloatingLabel>
-                 </Form.Group>
-                 <Form.Group controlId="formPrice">
-                     <FloatingLabel controlId='floatingInput' label="Price : " className='mb-3'>   
-                         <Form.Control type="number" name="price" placeholder='price' value={formData.price} onChange={handleChange} required />
-                     </FloatingLabel>
-                 </Form.Group>
+                        <Form.Group controlId="ImageUl">
+                            <FloatingLabel controlId='floatingInput' label="ImageUrl : " className='mb-3'>   
+                                <Form.Control type="text" placeholder="image" name="imageUrl" value={formData.imageUrl} onChange={handleChange} required />
+                            </FloatingLabel>
+                        </Form.Group>
+                        <Form.Group controlId="formProductName">
+                            <FloatingLabel controlId='floatingInput' label="Product Name : " className='mb-3'>   
+                                <Form.Control type="text" name="productName" placeholder='productName' value={formData.productName} onChange={handleChange} required />
+                            </FloatingLabel>
+                        </Form.Group>
+                        <Form.Group controlId="formPrice">
+                            <FloatingLabel controlId='floatingInput' label="Price : " className='mb-3'>   
+                                <Form.Control type="number" name="price" placeholder='price' value={formData.price} onChange={handleChange} required />
+                            </FloatingLabel>
+                        </Form.Group>
                         <Form.Group controlId="formColor">
                             <FloatingLabel label='Color'>
-                            <Form.Control type="String" name="color" value={formData.color} onChange={handleChange} required />
+                                <Form.Control type="text" name="color" value={formData.color} onChange={handleChange} required />
                             </FloatingLabel>
                         </Form.Group>
                         <Form.Group controlId="formType">
                             <FloatingLabel label='Type '>
-                            <Form.Control type="String" name="type" value={formData.type} onChange={handleChange} required />
+                                <Form.Control type="text" name="type" value={formData.type} onChange={handleChange} required />
                             </FloatingLabel>
                         </Form.Group>
                         <Form.Group controlId="formDescription">
-                     <FloatingLabel controlId='floatingInput' label="Description : " className='mb-3'>   
-                          <Form.Control type="text" name="description" placeholder='description'value={formData.description} onChange={handleChange} required />
-                     </FloatingLabel>
-                 </Form.Group>
-                 <Form.Group controlId="formQuantity">
-                     <FloatingLabel controlId='floatingInput' label="Quantity : " className='mb-3'>   
-                         <Form.Control type="number" name="quantity" placeholder='quantity' value={formData.quantity} onChange={handleChange} required />
-                     </FloatingLabel>
-                 </Form.Group>
+                            <FloatingLabel controlId='floatingInput' label="Description : " className='mb-3'>   
+                                <Form.Control type="text" name="description" placeholder='description' value={formData.description} onChange={handleChange} required />
+                            </FloatingLabel>
+                        </Form.Group>
+                        <Form.Group controlId="formQuantity">
+                            <FloatingLabel controlId='floatingInput' label="Quantity : " className='mb-3'>   
+                                <Form.Control type="number" name="quantity" placeholder='quantity' value={formData.quantity} onChange={handleChange} required />
+                            </FloatingLabel>
+                        </Form.Group>
+                        <Form.Group controlId="formGender">
+                            <FloatingLabel label='Category'>
+                                <Form.Control type="text" name="gender" value={formData.gender} onChange={handleChange} required />
+                            </FloatingLabel>
+                        </Form.Group>
                         <Button variant="primary" type="submit" className="mt-3">{editProduct ? "Save Changes" : "Add Product"}</Button>
                     </Form>
                 </Modal.Body>
@@ -231,7 +222,5 @@ const ProductComponent = () => {
         </>
     );
 };
-
-
 
 export default ProductComponent;

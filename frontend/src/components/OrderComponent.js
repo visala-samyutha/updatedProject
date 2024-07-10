@@ -72,6 +72,12 @@ function OrderComponent() {
                           <Col md={2} className="text-center d-flex justify-content-center align-items-center">
                             <p className="text-muted mb-0 small">Product Price: Rs.{order.price / order.quantity}</p>
                           </Col>
+                          <Col md={2} className="text-center d-flex justify-content-center align-items-center">
+                            <p className="text-muted mb-0 small">Category: {order.gender}</p>
+                          </Col>
+                          <Col md={4} className="text-center d-flex justify-content-center align-items-center">
+                            <p className="text-muted mb-0 small">Date:{order.date}</p>
+                          </Col>
                         </Row>
                         <hr style={{ backgroundColor: '#e0e0e0', opacity: 1, margin: '20px 0' }} />
                         <div className="row d-flex align-items-center">

@@ -9,6 +9,7 @@ const HomeOrderComponent = () => {
   const [product, setProduct] = useState({});
   const [tprice, setTotal] = useState(0);
   const [date,setDate]=useState();
+  const [gender, setGender] = useState('');
   useEffect(() => {
     fetchOrders();
   }, []);
@@ -23,6 +24,7 @@ const HomeOrderComponent = () => {
       const now=new Date();
      const formattedDate=now.toLocaleString();
      setDate(formattedDate);
+     setGender(response.data.gender);
       console.log(product);
     } catch (err) {
       console.log(err);
@@ -58,6 +60,9 @@ const HomeOrderComponent = () => {
                                                 <Col md={2} className="text-center d-flex justify-content-center align-items-center">
                                                     <p className="text-muted mb-0 small">Price: Rs.{product.price}</p>
                                                 </Col>
+                                                <Col md={2} className="text-center d-flex justify-content-center align-items-center">
+                                                        <p className="text-muted mb-0 small">Category: {gender}</p>
+                                                    </Col>
                                                 <Col md={2} className="text-center d-flex justify-content-center align-items-center">
                                                     <p className="text-muted mb-0 small">Date: {date}</p>
                                                 </Col>

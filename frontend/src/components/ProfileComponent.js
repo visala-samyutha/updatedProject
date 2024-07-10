@@ -3,7 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button} from 'react-bootstrap'
+import { Button } from 'react-bootstrap';
 
 const ProfileComponent = () => {
   const navigate = useNavigate();
@@ -93,6 +93,14 @@ const ProfileComponent = () => {
     return null;
   }
 
+  const handleChangePassword = () => {
+    navigate('/pass');
+  };
+
+  const handleChatbotClick = () => {
+    navigate('/chatbot'); // Adjust the route to match your chatbot component's route
+  };
+
   return (
     <div className="container">
       <div className="main-body">
@@ -104,10 +112,10 @@ const ProfileComponent = () => {
                   <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width="150" />
                   <div className="mt-3">
                     <h4>{user.username}</h4>
-                    <p className="text-secondary mb-1">Full Stack Developer</p>
-                    <Button variant="none" className="button"  onClick={handleCartClick} style={{color:'purple'}}>Cart</Button>
-                    <Button variant='none' className="button" onClick={handleOrderClick} style={{color:'purple'}}>My Orders</Button><br/><br/>
-                    <Button className='btn btn-danger' onClick={handleProfileDelete}>Delete Account</Button>
+                    <Button variant="none" className="button" onClick={handleCartClick} style={{ color: 'purple' }}>Cart</Button>
+                    <Button variant="none" className="button" onClick={handleOrderClick} style={{ color: 'purple' }}>My Orders</Button><br /><br />
+                    <Button className='btn btn-danger' onClick={handleProfileDelete}>Delete Account</Button><br /><br />
+                    <Button variant="none" className="button" onClick={handleChatbotClick} style={{ color: 'purple' }}>Chat with us</Button>
                   </div>
                 </div>
               </div>
@@ -147,7 +155,8 @@ const ProfileComponent = () => {
                     <hr />
                     <div className="row">
                       <div className="col-sm-12">
-                        <Button variant='none' className="button" onClick={handleEditToggle} style={{color:'purple'}}>Edit</Button>
+                        <Button variant="none" className="button" onClick={handleEditToggle} style={{ color: 'purple' }}>Edit</Button>
+                        <Button variant="none" className="button" onClick={handleChangePassword} style={{ color: 'purple' }}>Change Password</Button>
                       </div>
                     </div>
                   </>
@@ -158,9 +167,9 @@ const ProfileComponent = () => {
                         <h6 className="mb-0">UserName</h6>
                       </div>
                       <div className="col-sm-9 text-secondary">
-                        <input 
-                          type="text" 
-                          className="form-control" 
+                        <input
+                          type="text"
+                          className="form-control"
                           value={username}
                           onChange={(e) => setUsername(e.target.value)}
                         />
@@ -172,9 +181,9 @@ const ProfileComponent = () => {
                         <h6 className="mb-0">Email</h6>
                       </div>
                       <div className="col-sm-9 text-secondary">
-                        <input 
-                          type="email" 
-                          className="form-control" 
+                        <input
+                          type="email"
+                          className="form-control"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                         />
@@ -186,9 +195,9 @@ const ProfileComponent = () => {
                         <h6 className="mb-0">Mobile</h6>
                       </div>
                       <div className="col-sm-9 text-secondary">
-                        <input 
-                          type="text" 
-                          className="form-control" 
+                        <input
+                          type="text"
+                          className="form-control"
                           value={mobileNumber}
                           onChange={(e) => setMobileNumber(e.target.value)}
                         />

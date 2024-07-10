@@ -220,7 +220,7 @@ const HomeProductDetail = () => {
                 <Card.Text className="product-color"><strong>Color:</strong> {product.color}</Card.Text>
                 <Card.Text className="product-type"><strong>Type:</strong> {product.type}</Card.Text>
                 <Card.Text className="product-description"><strong>Description:</strong> {product.description}</Card.Text>
-
+                <Card.Text className="product-gender"><strong>Category:</strong> {product.gender}</Card.Text>
                 <div className="button-group">
                   <Button variant="none" className="add-to-cart-button button btn1" onClick={() => handleAddToCart(product._id)}>
                     Add to cart

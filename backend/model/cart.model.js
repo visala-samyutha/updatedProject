@@ -20,6 +20,7 @@ const cartSchema=mongoose.Schema({
             type:Number,
             default:1,
         },
+        gender:String,
         price:Number
     }]
 });

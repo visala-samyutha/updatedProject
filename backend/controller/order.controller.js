@@ -21,9 +21,9 @@ async function getUserProducts(req, res) {
         console.log(orders);
         orders.forEach(order=>{
             order.items.forEach(orderItem=>{
-                const {imageUrl,productId,productName,quantity,price,status,id}=orderItem;
+                const {date,imageUrl,productId,productName,quantity,gender,price,status,id}=orderItem;
                 const obj={
-                    imageUrl,productId,productName,quantity,price,status,id
+                    date,imageUrl,productId,productName,quantity,gender,price,status,id
                 }
                 arr.push(obj);
             })
@@ -49,12 +49,16 @@ async function placeOrder(req,res){
         var totalPrice=0
             cartItems.items.forEach(item => {
                 console.log(item)
-                const { imageUrl,productId, productName, quantity, price } = item;
+                const { imageUrl,productId, productName, quantity,gender, price } = item;
+                const now=new Date();
+                const formattedDate=now.toLocaleString();
                 orders.items.push({
+                    date:formattedDate,
                     imageUrl,
                     productId,
                     productName,
                     quantity,
+                    gender,
                     price,
                     status: "order placed"
                 });
@@ -89,12 +93,16 @@ async function directOrder(req, res) {
             product.quantity=product.quantity-1;
             await product.save();
         }
-        const { imageUrl,productName, price } = product;
+        const { imageUrl,productName, gender,price } = product;
+        const now=new Date();
+        const formattedDate=now.toLocaleString();
         orders.items.push({
+            date:formattedDate,
             imageUrl,
             productId:product._id,
             productName,
             quantity: quantity || 1,
+            gender,
             price,
             status: "order placed"
         });

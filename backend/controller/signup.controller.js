@@ -38,7 +38,7 @@ async function saveUser(req, res) {
             role // Assign the determined role
         });
 
-        res.status(201).json({ message: "User signed up successfully", success: true, user });
+        res.status(201).json({ message: " signed up successfully", success: true, user });
     } catch (error) {
         console.error(error);
         res.status(400).json({ message: "Invalid details" });
@@ -64,7 +64,7 @@ async function checkUser(req, res) {
         const token = jwt.sign({ userId: user._id }, process.env.TOKEN_KEY, { expiresIn:'24h'
         });
 
-        res.status(200).json({ token: token, login: true, role: user.role, message: "User logged in successfully", id: user._id,user });
+        res.status(200).json({ token: token, login: true, role: user.role, message: " logged in successfully", id: user._id,user });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal server error" });

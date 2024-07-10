@@ -5,6 +5,7 @@ const orderSchema=mongoose.Schema({
     },
   userId: { type:mongoose.Schema.Types.ObjectId, required: true },
   items: [{
+        date:Date,
         imageUrl:String,
         productId:{
             type:String,
@@ -15,6 +16,7 @@ const orderSchema=mongoose.Schema({
                 type:Number,
                 default:1,
             },
+            gender:String,
         price: Number,
         status: { type: String, default: 'Processing' },
     }],

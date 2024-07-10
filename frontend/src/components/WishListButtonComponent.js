@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {toast} from 'react-toastify'
 
 const WishlistButton = ({ productId, initialIsInWishlist, onToggleWishlist }) => {
   const [isInWishlist, setIsInWishlist] = useState(initialIsInWishlist);
   const userId = localStorage.getItem('userId');
-
+  const navigate = useNavigate();
   useEffect(() => {
     setIsInWishlist(initialIsInWishlist);
   }, [initialIsInWishlist]);
@@ -27,6 +28,9 @@ const WishlistButton = ({ productId, initialIsInWishlist, onToggleWishlist }) =>
     }
   };
   const addToWishist= async () => {
+    if(!userId){
+      navigate('/login');
+    }
     try{
         const response = await axios.post(`http://localhost:3002/wishlist/add/${userId}/${productId}`)
         toast.success(response.data.message,{autoClose:1000})
@@ -54,9 +58,7 @@ const WishlistButton = ({ productId, initialIsInWishlist, onToggleWishlist }) =>
         style={{ color: isInWishlist ? 'red' : 'black' }}
         onClick={handleToggleWishlist}
       />
-      <span style={{ marginLeft: '8px' }}>
-        {isInWishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
-      </span>
+      
     </div>
   );
 };

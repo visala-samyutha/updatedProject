@@ -44,6 +44,7 @@ function AboutUsComponent() {
 
     return (
         <div style={containerStyle}>
+            <a href='https://www.google.com/maps/dir/17.2019658,78.5952688/fashionfusion/@17.2823653,78.4554806,12z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3bcb9721fac14947:0x98dac713f27df010!2m2!1d78.4731473!2d17.3627509?entry=ttu'>directions</a>
             <h2 style={titleStyle}>About Us</h2>
 
             <div style={sectionStyle}>

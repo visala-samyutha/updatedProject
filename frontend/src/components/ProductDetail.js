@@ -43,6 +43,7 @@ const ProductDetail = () => {
               <Card.Text><strong>Type:</strong> {product.type}</Card.Text>
               <Card.Text><strong>Description:</strong> {product.description}</Card.Text>
               <Card.Text><strong>Quantity:</strong> {product.quantity}</Card.Text>
+              <Card.Text><strong>Category:</strong>{product.gender}</Card.Text>
             </Card.Body>
           </Card>
         </Col>

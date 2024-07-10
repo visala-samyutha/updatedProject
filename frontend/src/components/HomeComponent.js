@@ -18,7 +18,7 @@ function HomeComponent() {
   const [typeFilter, setTypeFilter] = useState('');
   const [priceFilter, setPriceFilter] = useState('');
   const [wishlistStatuses, setWishlistStatuses] = useState({});
-
+  const [genderFilter, setGenderFilter] = useState('');
 
   useEffect(() => {
     fetchProductData();
@@ -38,9 +38,12 @@ function HomeComponent() {
         const [min, max] = priceFilter.split('-').map(Number);
         filtered = filtered.filter(product => product.price >= min && product.price <= max);
     }
+    if (genderFilter) {
+      filtered = filtered.filter(product => product.gender === genderFilter);
+    }
 
     setFilteredProducts(filtered);
-}, [colorFilter, typeFilter, priceFilter, products]);
+}, [colorFilter, typeFilter, priceFilter,genderFilter, products]);
   const fetchProductData = async () => {
       try {
         const response = await axios.get("http://localhost:3002/home/");
@@ -137,6 +140,15 @@ const handleToggleWishlist = (productId, isInWishlist) => {
                                         <option value="5000-10000">5000-10000</option>
                                     </Form.Control>
                                 </Form.Group>
+                                <Form.Group controlId="genderFilter">
+                    <Form.Label>Category</Form.Label>
+                    <Form.Control as="select" value={genderFilter} onChange={(e) => setGenderFilter(e.target.value)}>
+                      <option value="">All</option>
+                      <option value="men">Men</option>
+                      <option value="women">Women</option>
+                      <option value="kids">Kids</option>
+                    </Form.Control>
+                  </Form.Group>
                             </Dropdown.Menu>
                         </Dropdown>
                     </Col>
