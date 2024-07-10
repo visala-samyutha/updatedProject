@@ -16,6 +16,7 @@ const AuthProvider = ({ children }) => {
         return savedToken ? JSON.parse(savedToken) : null;
     });
     const [productId, setProductId] = useState(null);
+    const[name,setName]=useState(null);
     const navigate = useNavigate();
 
     const LoginAction = async (data) => {
@@ -26,6 +27,7 @@ const AuthProvider = ({ children }) => {
                 }
             });
             setRole(response.data.role);
+            setName(response.data.user.username);
             localStorage.setItem("userId", response.data.id);
             toast.success(response.data.message); // Success toast message
             if (response.data && response.data.token) {
@@ -57,7 +59,7 @@ const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ token, role, LoginAction, logOut, productId, setProductId }}>
+        <AuthContext.Provider value={{ token, role, LoginAction, logOut, productId, setProductId,name }}>
             {children}
         </AuthContext.Provider>
     );

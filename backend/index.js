@@ -9,6 +9,7 @@ const productRoutes=require('./routes/product.route');
 const adminRoutes1=require('./routes/admin.route');
 const cartRoutes=require('./routes/cart.route');
 const orderRoutes=require('./routes/order.route');
+const wishlistRoutes=require('./routes/wishlist.route');
 
 const port=process.env.PORT;
 const mongoose=require('mongoose');
@@ -20,5 +21,6 @@ app.use('/home',productRoutes);
 app.use('/admin',adminRoutes1);
 app.use('/cart',cartRoutes)
 app.use('/order',orderRoutes)
+app.use('/wishlist',wishlistRoutes)
 
 app.listen(port);

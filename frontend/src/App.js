@@ -25,6 +25,7 @@ import UserPrivateRoute from './Routes/UserPrivateRoute';
 import AboutUsComponent from './components/AboutUsComponent';
 import { ToastContainer } from 'react-toastify';
 import ProfileComponent from './components/ProfileComponent';
+import WishlistComponent from './components/WishlistComponent'
 function App() {
   return(
  <BrowserRouter>
@@ -46,6 +47,7 @@ function App() {
                     <Route path="/cartorder" exact element={<CartOrderComponent/>}></Route>
                     <Route path="/profile" element={<ProfileComponent />} />
                     <Route path="/homeproduct/:id" exact element={<HomeProductDetail/>}></Route>
+                    <Route path='/wishlist' element={<WishlistComponent/>}></Route>
                    </Route>
  <Route  element={<AdminPrivateRoute />}>
                     <Route path='/product' element={<ProductComponent/>}></Route>

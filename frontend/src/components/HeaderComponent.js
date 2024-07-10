@@ -55,8 +55,19 @@ import '../style.css'
 import '../HeaderComponent.css'
 import DropDownComponent from './DropDownComponent';
 import logo from '../img/logo.png'
+import {useState,useEffect} from 'react';
 
 function HeaderComponent() {
+    const { token } = useAuth();
+    const[isLoggedIn,setIsLoggedIn]=useState(false)
+    useEffect(() => {
+        const token = localStorage.getItem('token'); // Replace with your actual token retrieval logic
+        if (token) {
+          setIsLoggedIn(true);
+        } else {
+          setIsLoggedIn(false);
+        }
+      }, [token]);
     return (
         <div className="container bg-color position-sticky">
         <div className="d-flex align-items-center justify-content-between">
@@ -75,13 +86,15 @@ function HeaderComponent() {
                         <Link to="/about" className="btn btn-color text-dark me-2">About Us</Link>
                     </li>
     
-                    <li>
-                        <Link to="/login" className="btn btn-color text-dark me-2">Login</Link>
-                    </li>
+                    {!isLoggedIn ? (
+                        <li>
+                           <Link to="/login" className="btn btn-color text-dark me-2">Login</Link>
+                        </li>
+                    ) : null}
                     <li>
                         <Link to="/signup" className="btn btn-color text-dark me-2">SignUp</Link>
                     </li>
-                    <DropDownComponent />
+                    <DropDownComponent/>
                 </ul>
             </div>
         </div>

@@ -27,6 +27,9 @@ function DropDownComponent() {
     const handleProduct=()=>{
         navigate('/product')
     }
+    const handleWishlist=()=>{
+        navigate('/wishlist')
+    }
     
        return(
         <>
@@ -54,6 +57,9 @@ function DropDownComponent() {
         
         <li className='p-2 cursor-pointer rounded hover:bg-purple-200' onClick={handleLogout}>
             Logout
+        </li>
+        <li className='p-2 cursor-pointer rounded hover:bg-purple-200' onClick={handleWishlist}>
+            Wishlist
         </li>
     </ul>
 </div>

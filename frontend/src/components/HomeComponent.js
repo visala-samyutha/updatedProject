@@ -6,19 +6,23 @@ import { useAuth } from "../Provider/AuthProvider";
 import OptionsComponent from './OptionsComponent';
 import '../ProductComponent.css'; 
 import FooterComponent from './FooterComponent';
+import WishlistButtonComponent from './WishListButtonComponent';
 
 function HomeComponent() {
   const navigate=useNavigate();
+  const userId = localStorage.getItem("userId");
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [colorFilter, setColorFilter] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
   const [priceFilter, setPriceFilter] = useState('');
+  const [wishlistStatuses, setWishlistStatuses] = useState({});
 
 
   useEffect(() => {
     fetchProductData();
+    fetchWishlistStatuses();
   }, []);
   useEffect(() => {
     let filtered = products;
@@ -35,9 +39,6 @@ function HomeComponent() {
         filtered = filtered.filter(product => product.price >= min && product.price <= max);
     }
 
-    
-    
-
     setFilteredProducts(filtered);
 }, [colorFilter, typeFilter, priceFilter, products]);
   const fetchProductData = async () => {
@@ -48,6 +49,15 @@ function HomeComponent() {
         console.log(err);
       }
     };
+    const fetchWishlistStatuses = async () => {
+        try {
+          const response = await axios.get(`http://localhost:3002/wishlist/status/${userId}`);
+          setWishlistStatuses(response.data);
+          console.log(response.data)
+        } catch (err) {
+          console.log(err);
+        }
+      };
     const handleSearch=(e)=>{
       setSearchQuery(e.target.value);
   
@@ -58,6 +68,12 @@ function HomeComponent() {
   const handleSingleProduct = (id) => {
     navigate(`/homeproduct/${id}`);
 };
+const handleToggleWishlist = (productId, isInWishlist) => {
+    setWishlistStatuses((prevStatuses) => ({
+      ...prevStatuses,
+      [productId]: isInWishlist,
+    }));
+  };
     return(
        <>
        <OptionsComponent/>
@@ -135,6 +151,11 @@ function HomeComponent() {
                                 <Card.Text>Price:Rs {product.price}</Card.Text>
                                 <div className="d-flex justify-content-between">
                                     <Button variant="link" onClick={() => handleSingleProduct(product._id)}>See More</Button>
+                                    <WishlistButtonComponent
+                  productId={product._id}
+                    initialIsInWishlist={wishlistStatuses[product._id] || false}
+                    onToggleWishlist={handleToggleWishlist}
+                  />
                                 </div>
                             </Card.Body>
                         </Card>
