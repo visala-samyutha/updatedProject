@@ -44,7 +44,7 @@ function AboutUsComponent() {
 
     return (
         <div style={containerStyle}>
-            <a href='https://www.google.com/maps/dir/17.2019658,78.5952688/fashionfusion/@17.2823653,78.4554806,12z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3bcb9721fac14947:0x98dac713f27df010!2m2!1d78.4731473!2d17.3627509?entry=ttu'>directions</a>
+           
             <h2 style={titleStyle}>About Us</h2>
 
             <div style={sectionStyle}>
@@ -82,7 +82,7 @@ function AboutUsComponent() {
                         style={imageStyle}
                         onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
                         onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                        src="https://ayushi-verma.dmlearning.in/wp-content/uploads/2023/08/20230808_154758_0000.png"
+                        src="https://zola.in/cdn/shop/articles/jeggings_banner.jpg?v=1685606239"
                         alt="Our Story"
                     />
                 </div>
@@ -120,10 +120,11 @@ function AboutUsComponent() {
                 </div>
                 <div>
                     <img
+                    
                         style={imageStyle}
                         onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
                         onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                        src="https://zola.in/cdn/shop/articles/jeggings_banner.jpg?v=1685606239"
+                        src="https://shreeman.in/cdn/shop/files/Artboard_1_06edebbb-33db-4517-9b71-045f2aa3f8b8.jpg?v=1671272106&width=1800"
                         alt="Meet the Team"
                     />
                 </div>

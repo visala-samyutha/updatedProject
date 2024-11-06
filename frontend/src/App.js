@@ -21,7 +21,7 @@ import AdminPrivateRoute from './Routes/AdminPrivateRoute'
 import ProductDetail from './components/ProductDetail';
 import HomeProductDetail from './components/HomeProductDetail';
 import UserPrivateRoute from './Routes/UserPrivateRoute';
-import ChatBotComponent from './components/ChatBotComponent'
+
 import AboutUsComponent from './components/AboutUsComponent';
 import { ToastContainer } from 'react-toastify';
 import ProfileComponent from './components/ProfileComponent';
@@ -48,7 +48,7 @@ function App() {
                     <Route path="/profile" element={<ProfileComponent />} />
                     <Route path="/homeproduct/:id" exact element={<HomeProductDetail/>}></Route>
                     <Route path='/wishlist' element={<WishlistComponent/>}></Route>
-                    <Route path='/chatbot' element={<ChatBotComponent/>}/>
+                    
                    </Route>
  <Route  element={<AdminPrivateRoute />}>
                     <Route path='/product' element={<ProductComponent/>}></Route>

@@ -45,6 +45,7 @@ function OrderComponent() {
         </div>
       ) : (
         <Container className="py-5 h-100">
+          <h1 align="center">My Orders</h1>
           <Row className="d-flex justify-content-center align-items-center h-100">
             <Col lg={10} xl={8}>
               {orders.map((order) => (

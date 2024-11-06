@@ -115,7 +115,7 @@ const ProfileComponent = () => {
                     <Button variant="none" className="button" onClick={handleCartClick} style={{ color: 'purple' }}>Cart</Button>
                     <Button variant="none" className="button" onClick={handleOrderClick} style={{ color: 'purple' }}>My Orders</Button><br /><br />
                     <Button className='btn btn-danger' onClick={handleProfileDelete}>Delete Account</Button><br /><br />
-                    <Button variant="none" className="button" onClick={handleChatbotClick} style={{ color: 'purple' }}>Chat with us</Button>
+                   
                   </div>
                 </div>
               </div>

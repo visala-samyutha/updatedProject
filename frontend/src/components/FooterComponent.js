@@ -1,7 +1,7 @@
 import React from 'react';
 import '../footer.css';
 
-import { Link } from 'react-router-dom';
+
 import FacebookOutlinedIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
@@ -18,7 +18,7 @@ const Footer = () => {
                 </div>
                 <div className='row'>
                     <div className='col-md-12 text-center'>
-                        <p>Contact us : 6303690238</p>
+                        <p>Contact us : 9876543210</p>
                     </div>
                 </div>
                 <div className='row'>

@@ -54,6 +54,7 @@ const WishlistComponent=()=>{
       ) : (
         <Container>
           <Row className="justify-content-center">
+          <h1 align="center">WishList</h1>
             {list.map((list) => (
               <Col key={list.productId} xs={12} sm={6} md={4} lg={3} className="mb-3">
                 <Card className='product-card' style={{ maxWidth: '18rem', border: 'none', textAlign: 'center', transition: 'transform 0.3s, box-shadow 0.3s' }}
