@@ -185,7 +185,7 @@ const ProfileComponent = () => {
                           type="email"
                           className="form-control"
                           value={email}
-                          onChange={(e) => setEmail(e.target.value)}
+                          disabled // Disable email field during edit
                         />
                       </div>
                     </div>

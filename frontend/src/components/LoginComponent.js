@@ -47,12 +47,12 @@ const LoginComponent = () => {
                                     <input type="password" id="pass" className="form-control" placeholder="Enter your password" required onChange={(e) => setPassword(e.target.value)} />
                                     <label for='pass'>Password</label>
                                     </div>
-                                <div className="mb-3 form-check">
-                                    <input type="checkbox" className="form-check-input" id="agreeCheckbox" checked={agreeTerms} onChange={(e) => setAgreeTerms(e.target.checked)} required />
-                                    <label className="form-check-label" htmlFor="agreeCheckbox">
+                                {/* <div className="mb-3 form-check"> */}
+                                    {/* <input type="checkbox" className="form-check-input" id="agreeCheckbox" checked={agreeTerms} onChange={(e) => setAgreeTerms(e.target.checked)} required /> */}
+                                    {/* <label className="form-check-label" htmlFor="agreeCheckbox">
                                         By continuing, I agree to the <Link to="/term">Terms And Conditions</Link> of FashionFusion
-                                    </label>
-                                </div>
+                                    </label> */}
+                                {/* </div> */}
                                 <div className="d-grid">
                                     <button type="submit" className="btn btn-dark btn-lg">Login</button>
                                 </div>
